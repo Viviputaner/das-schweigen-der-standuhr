@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ein Weihnachtskrimi in 24 Türchen: Wer brachte den Hotelier der Silbertanne zum Schweigen?">
+<meta name="theme-color" content="#0d171e">
+<title>Das Schweigen der Standuhr – Ein Weihnachtskrimi in 24 Türchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0d171e; --night2:#1a2b36;
+  --brass:#d7b25c; --brass2:#f0d58c;
+  --paper:#f5efe1; --manila:#ecdcb2; --index:#e7e4da;
+  --ink:#231c15; --mute:#5a5043;
+  --blood:#9b2222; --wine:#7b2a2a;
+  --cork:#94704b; --wood:#3b2716;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --type:'Special Elite','Courier New',monospace;
+  --fs:20px;
+}
+*{box-sizing:border-box}
+html{font-size:var(--fs);overflow-x:clip}
+body{margin:0;min-height:100vh;color:#efe8d6;font-family:'Lora',Georgia,serif;line-height:1.6;padding:24px 16px 60px;overflow-x:clip;
+  background:
+    radial-gradient(70% 45% at 50% 0%,rgba(215,178,92,.13),transparent 70%),
+    radial-gradient(120% 80% at 50% 120%,rgba(0,0,0,.6),transparent 60%),
+    linear-gradient(#13222c,#0b141a 60%,#080e12)}
+body:has(dialog[open]){overflow:hidden}
+#snow{position:fixed;inset:0;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--brass2);outline-offset:3px}
+
+/* ---------- Kopf ---------- */
+header.top{text-align:center}
+.case{display:inline-block;margin:0 0 14px;padding:4px 14px;font-family:var(--type);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass2);border-top:1px solid rgba(215,178,92,.5);border-bottom:1px solid rgba(215,178,92,.5)}
+.scene{display:flex;justify-content:center;align-items:flex-end;gap:18px;margin-bottom:6px}
+.candle{width:16px;height:50px;border-radius:3px;background:linear-gradient(90deg,#b9b09a,#f1ead8,#b9b09a);position:relative;opacity:.45}
+.candle:nth-child(2),.candle:nth-child(4){height:40px}
+.candle::before{content:"";position:absolute;left:50%;top:-24px;width:14px;height:24px;margin-left:-7px;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;background:radial-gradient(#fff6c8,#ffb83d 60%,transparent 72%);opacity:0}
+.candle::after{content:"";position:absolute;left:50%;top:-3px;width:2px;height:5px;background:#333;margin-left:-1px}
+.candle.lit{opacity:1}
+.candle.lit::before{opacity:1;animation:flick 1.6s infinite alternate ease-in-out;box-shadow:0 0 22px 8px rgba(255,184,61,.3)}
+@keyframes flick{to{transform:scale(.88,1.08) rotate(-3deg)}}
+.clock{width:96px;height:96px;margin:0 6px;filter:drop-shadow(0 0 18px rgba(240,213,140,.25)) drop-shadow(0 6px 10px rgba(0,0,0,.5))}
+.clock .pend{transform-origin:50px 0;animation:pend 2s ease-in-out infinite alternate}
+@keyframes pend{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.3rem,7vw,3.8rem);line-height:1.02;margin:12px 0 6px;color:var(--brass2);text-shadow:0 3px 18px rgba(0,0,0,.6)}
+.sub{margin:0;font-size:1.1rem;color:#dfe5e6}
+.hotel{margin:6px 0 0;font-style:italic;color:#a9bbc0;font-size:.92rem}
+.stamp{display:inline-block;font-family:var(--type);text-transform:uppercase;letter-spacing:.14em;color:#e0574f;border:3px double #e0574f;border-radius:4px;padding:3px 12px;transform:rotate(-5deg);opacity:.9}
+.tools{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.tbtn{font-weight:600;font-size:.92rem;color:var(--brass2);background:rgba(13,23,30,.55);border:1.5px solid rgba(215,178,92,.75);border-radius:40px;padding:10px 22px 10px 18px;cursor:pointer;min-height:50px;display:inline-flex;align-items:center;gap:10px;transition:background .2s,color .2s,border-color .2s}
+.tbtn svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tbtn:hover{background:var(--brass);color:var(--night);border-color:var(--brass)}
+.countdown{margin-top:14px;color:var(--brass2);font-weight:600;font-size:1rem}
+.countdown:empty{display:none}
+
+
+.previewbar{margin:28px auto -6px;padding:10px 16px;background:var(--paper);color:var(--ink);border-radius:4px;font-family:var(--type);font-size:.82rem;text-align:center;transform:rotate(.4deg);box-shadow:0 6px 14px rgba(0,0,0,.4)}
+.previewbar button{margin:6px 0 0 8px;font-family:'Lora',serif;font-weight:600;font-size:.8rem;background:var(--night);color:var(--brass2);border:0;border-radius:6px;padding:6px 12px;cursor:pointer;min-height:36px}
+
+/* ---------- Ermittlungstafel ---------- */
+.board{position:relative;margin-top:34px;border:14px solid var(--wood);border-radius:6px;padding:26px 20px 26px;
+  background-color:var(--cork);
+  background-image:
+    radial-gradient(rgba(55,32,12,.38) 1px,transparent 1.6px),
+    radial-gradient(rgba(255,232,190,.2) 1px,transparent 1.6px),
+    radial-gradient(rgba(70,42,18,.25) 2px,transparent 2.6px);
+  background-size:7px 7px,11px 11px,23px 23px;background-position:0 0,3px 5px,9px 2px;
+  box-shadow:inset 0 0 0 2px rgba(0,0,0,.35),inset 0 0 60px rgba(30,15,0,.55),0 0 0 2px #5b3e24,0 22px 50px rgba(0,0,0,.6)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.calendar{display:grid;grid-template-columns:repeat(6,1fr);gap:22px 18px}
+@media(max-width:780px){.calendar{grid-template-columns:repeat(4,1fr);gap:18px 12px}.board{padding:18px 12px 20px;border-width:10px}}
+@media(max-width:460px){.calendar{grid-template-columns:repeat(3,1fr)}.vtip{display:none}.lbl{font-size:.52rem;letter-spacing:.04em}}
+
+.slot{position:relative;aspect-ratio:1/1;perspective:900px;transform:rotate(var(--r,0deg))}
+/* Pinnnadel */
+.slot::before{content:"";position:absolute;z-index:4;top:4px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#ff8a80,#c62828 45%,#7a1010);box-shadow:2px 4px 4px rgba(0,0,0,.45);pointer-events:none}
+.slot:nth-child(3n+2)::before{background:radial-gradient(circle at 35% 30%,#fff3c4,#d7b25c 45%,#7d5f1c)}
+
+/* Rückseite: das „Fach“ hinter der Karte */
+.inside{position:absolute;inset:0;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;
+  background:linear-gradient(160deg,var(--night2),var(--night));border:2px solid var(--brass);color:var(--brass2);text-align:center;box-shadow:inset 0 0 18px rgba(0,0,0,.6)}
+.inside .ie{font-size:2rem;line-height:1.1}
+.inside .in{font-family:var(--type);font-size:.68rem;letter-spacing:.06em}
+.inside small{font-family:var(--type);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:#f08a80;border:2.5px double #e0574f;border-radius:3px;padding:1px 6px;transform:rotate(-4deg);margin-top:3px}
+.inside:hover{border-color:var(--brass2);background:linear-gradient(160deg,#243a48,var(--night2))}
+
+/* Vorderseite: Karteikarte */
+.door{position:absolute;inset:0;border:0;padding:0;cursor:pointer;background:none;border-radius:4px;transform-origin:left center;transform-style:preserve-3d;
+  transition:transform .9s cubic-bezier(.6,-.1,.3,1.2),opacity .3s}
+.face{position:absolute;inset:0;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:40px;color:var(--ink);
+  background:
+    linear-gradient(transparent 40px,rgba(155,34,34,.55) 40px 42px,transparent 42px),
+    repeating-linear-gradient(transparent 0 17px,rgba(60,90,140,.13) 17px 18px),
+    var(--paper);
+  box-shadow:0 7px 14px rgba(0,0,0,.5),inset 0 0 0 1px rgba(0,0,0,.08),inset 0 -14px 24px rgba(120,90,40,.12)}
+.slot:nth-child(4n+2) .face{background:linear-gradient(transparent 40px,rgba(155,34,34,.5) 40px 42px,transparent 42px),var(--manila)}
+.slot:nth-child(4n+3) .face{background:linear-gradient(transparent 40px,rgba(155,34,34,.5) 40px 42px,transparent 42px),repeating-linear-gradient(transparent 0 17px,rgba(60,90,140,.13) 17px 18px),var(--index)}
+.lbl{position:absolute;top:22px;left:0;right:0;text-align:center;font-family:var(--type);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.num{font-family:var(--serif);font-weight:700;font-variant-numeric:lining-nums;font-size:clamp(2.2rem,6vw,3rem);line-height:1;color:var(--ink)}
+.vote-door .lbl{color:var(--blood);font-weight:700}
+.vote-door .face{box-shadow:0 7px 14px rgba(0,0,0,.5),inset 0 0 0 3px rgba(155,34,34,.75),inset 0 0 0 6px rgba(255,255,255,.5)}
+.vtip{margin-top:0px;font-family:var(--type);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blood);border:2.5px double var(--blood);border-radius:3px;padding:1px 7px;transform:rotate(-5deg);opacity:.9}
+.door:hover:not([disabled]){transform:rotateY(-14deg)}
+.slot.open .door{transform:rotateY(-115deg);opacity:0;pointer-events:none;transition:transform .9s cubic-bezier(.6,-.1,.3,1.2),opacity .35s ease .55s}
+.slot.swing{clip-path:inset(0 round 4px);z-index:2}
+.slot:has(.door:focus-visible){outline:3px solid var(--brass2);outline-offset:4px;border-radius:6px}
+.door:focus-visible{outline:none}
+.slot.locked .face{filter:grayscale(.45) brightness(.72)}
+.slot.locked .face::after{content:"🔒";position:absolute;left:6px;top:4px;font-size:.75rem;opacity:.7}
+.slot.today::after{content:"";position:absolute;inset:-6px;border-radius:8px;box-shadow:0 0 0 4px rgba(255,200,80,.85),0 0 26px 6px rgba(255,184,61,.5);pointer-events:none;animation:glow 2s infinite ease-in-out}
+@keyframes glow{50%{opacity:.35}}
+.slot.shake .door{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+
+/* Notiz unter der Tafel */
+.memo{max-width:640px;margin:30px auto 0;padding:16px 22px 16px 56px;position:relative;background:var(--paper);color:var(--ink);border-radius:3px;font-size:.92rem;transform:rotate(-.6deg);box-shadow:0 10px 24px rgba(0,0,0,.5)}
+.memo::before{content:"🔎";position:absolute;left:16px;top:14px;font-size:1.3rem}
+.memo b{font-family:var(--type);font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--blood);display:block;font-size:.8rem}
+
+/* ---------- Akte (Dialog) ---------- */
+dialog{padding:0;border:0;background:transparent;color:var(--ink);width:min(780px,100% - 24px);max-width:none;max-height:calc(100dvh - 24px);overflow-y:auto;overscroll-behavior:contain;border-radius:6px}
+dialog::backdrop{background:rgba(4,8,11,.82);backdrop-filter:blur(2px)}
+dialog[open]{animation:pop .3s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.card{position:relative;background:var(--paper);border:3px solid var(--brass);border-radius:6px;padding:0 30px 26px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.card-head{position:relative;text-align:center;margin:0 -30px 22px;padding:22px 64px 18px;color:var(--brass2);overflow:hidden;
+  background:linear-gradient(var(--night2),var(--night));border-bottom:3px solid var(--brass)}
+.kicker{font-family:var(--type);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#c9d3d6}
+.emoji{font-size:2.6rem;line-height:1.2;margin-top:6px}
+.card h2{font-family:var(--serif);font-weight:700;font-size:2rem;line-height:1.12;margin:4px 0 6px;color:var(--brass2)}
+.when{display:inline-block;font-size:.82rem;color:#e7ecee;background:rgba(255,255,255,.08);border:1px solid rgba(215,178,92,.4);border-radius:20px;padding:3px 12px}
+.hstamp{position:absolute;right:-6px;bottom:14px;font-size:.7rem;transform:rotate(-12deg);opacity:.75}
+.body p{margin:0 0 14px;font-size:1.05rem;line-height:1.75}
+.body > p:first-child::first-letter{font-family:var(--serif);font-weight:700;float:left;font-size:3.3em;line-height:.85;padding:6px 8px 0 0;color:var(--wine)}
+.body .say{padding-left:14px;border-left:3px solid rgba(155,34,34,.35)}
+.x{position:absolute;top:12px;right:12px;width:46px;height:46px;border-radius:50%;border:2px solid var(--brass);background:var(--night);color:var(--brass2);font-size:1.5rem;cursor:pointer;z-index:3;line-height:1}
+.x:hover{background:var(--night2)}
+.btn{font-weight:600;background:var(--wine);color:#fff;border:0;border-radius:8px;padding:12px 28px;cursor:pointer;min-height:50px;font-size:1rem}
+.btn:hover{background:#913434}
+.foot{text-align:center;margin-top:22px}
+
+.qbox{position:relative;background:#fbf3c9;border-radius:2px;padding:16px 18px 14px 18px;margin:24px 4px 18px;transform:rotate(-.5deg);box-shadow:0 6px 14px rgba(0,0,0,.18)}
+.qbox::before{content:"";position:absolute;top:-10px;left:50%;width:90px;height:22px;margin-left:-45px;background:rgba(235,225,195,.85);transform:rotate(2deg);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.qbox b{display:block;font-family:var(--type);font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--blood);font-size:.85rem;margin-bottom:4px}
+
+.vote{margin-top:24px;border:2px solid var(--wine);border-radius:8px;padding:18px 18px 14px;background:#fbf7ec}
+.vote h3{font-family:var(--serif);font-size:1.6rem;margin:0 0 4px;color:var(--wine)}
+.vote > p{font-size:.92rem!important;margin:0 0 12px!important;color:var(--mute)}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.opt{display:block;width:100%;text-align:left;font-weight:600;background:#fff;color:var(--ink);border:2px solid #cbbf9f;border-radius:8px;padding:12px 14px;cursor:pointer;min-height:56px}
+.opt:hover{border-color:var(--wine)}
+.opt.chosen{background:var(--wine);color:#fff;border-color:var(--wine)}
+.opt.chosen::after{content:" ✓"}
+.opt small{font-weight:400;opacity:.85;display:block;font-size:.78rem;font-style:italic}
+.vres{margin-top:12px;font-weight:600;color:var(--wine)}
+
+.tips{position:relative;margin-top:24px;background:var(--night);color:#efe8d6;border-radius:8px;padding:18px 20px;overflow:hidden}
+.tips h3{margin:0 0 8px;font-family:var(--serif);font-size:1.6rem;color:var(--brass2)}
+.tips ul{margin:0;padding-left:1.2em}.tips li{margin:4px 0}
+.ok{color:#9fe0a8;font-weight:600}.no{color:#f0a0a0;font-weight:600}
+
+.group{font-family:var(--type);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blood);margin:6px 0 12px;padding-bottom:4px;border-bottom:2px solid var(--blood)}
+.group:not(:first-child){margin-top:26px}
+.person{display:flex;gap:14px;margin:0 0 14px;padding:0 0 12px;border-bottom:1px dashed #cdbf9e}
+.mono{flex:0 0 48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:1.2rem;background:var(--night);color:var(--brass2);border:2px solid var(--brass)}
+.person b{font-size:1.05rem}.person span{color:var(--mute);font-size:.82rem;display:block;font-style:italic}
+.person p{margin:4px 0 0!important;font-size:.95rem!important;line-height:1.55!important}
+
+.toast{position:fixed;left:50%;bottom:22px;z-index:20;transform:translate(-50%,160px);background:var(--paper);color:var(--ink);font-weight:600;padding:12px 20px;border-radius:6px;border-left:6px solid var(--blood);transition:transform .35s;max-width:calc(100% - 32px);text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.5)}
+.toast.show{transform:translate(-50%,0)}
+
+footer{text-align:center;color:#93a6ac;margin-top:26px;font-size:.8rem}
+
+@media(max-width:560px){
+  .card{padding:0 18px 22px}.card-head{margin:0 -18px 18px;padding:20px 56px 16px}
+  .card h2{font-size:1.7rem}.hstamp{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+<div class="wrap">
+<header class="top">
+  <p class="case">Kriminalpolizei · Akte „Silbertanne“ · Az. 24-12/1985</p>
+  <div class="scene" id="candles">
+    <div class="candle"></div><div class="candle"></div>
+    <svg class="clock" viewBox="0 0 100 130" aria-hidden="true">
+      <rect x="18" y="86" width="64" height="44" rx="4" fill="#3b2716" stroke="#d7b25c" stroke-width="3"/>
+      <g class="pend"><line x1="50" y1="86" x2="50" y2="116" stroke="#d7b25c" stroke-width="2"/><circle cx="50" cy="118" r="7" fill="#f0d58c" stroke="#a07c2c" stroke-width="2"/></g>
+      <circle cx="50" cy="46" r="43" fill="#f5efe1" stroke="#d7b25c" stroke-width="6"/>
+      <circle cx="50" cy="46" r="36" fill="none" stroke="#231c15" stroke-width="1"/>
+      <g stroke="#231c15" stroke-width="2.5" stroke-linecap="round">
+        <line x1="50" y1="12" x2="50" y2="19"/><line x1="50" y1="12" x2="50" y2="16" transform="rotate(30 50 46)"/><line x1="50" y1="12" x2="50" y2="16" transform="rotate(60 50 46)"/>
+        <line x1="50" y1="12" x2="50" y2="19" transform="rotate(90 50 46)"/><line x1="50" y1="12" x2="50" y2="16" transform="rotate(120 50 46)"/><line x1="50" y1="12" x2="50" y2="16" transform="rotate(150 50 46)"/>
+        <line x1="50" y1="12" x2="50" y2="19" transform="rotate(180 50 46)"/><line x1="50" y1="12" x2="50" y2="16" transform="rotate(210 50 46)"/><line x1="50" y1="12" x2="50" y2="16" transform="rotate(240 50 46)"/>
+        <line x1="50" y1="12" x2="50" y2="19" transform="rotate(270 50 46)"/><line x1="50" y1="12" x2="50" y2="16" transform="rotate(300 50 46)"/><line x1="50" y1="12" x2="50" y2="16" transform="rotate(330 50 46)"/>
+      </g>
+      <line x1="50" y1="46" x2="50" y2="26" stroke="#231c15" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="50" y1="46" x2="50" y2="17" stroke="#9b2222" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="50" cy="46" r="4" fill="#231c15"/>
+    </svg>
+    <div class="candle"></div><div class="candle"></div>
+  </div>
+  <h1>Das Schweigen der Standuhr</h1>
+  <p class="sub">Ein Weihnachtskrimi in 24 Türchen</p>
+  <p class="hotel">Tatort: Landhotel „Silbertanne“ in Eschbach · Dezember 2026</p>
+  <div class="countdown" id="countdown"></div>
+  <div class="tools">
+    <button class="tbtn" id="pbtn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.6c2.6.2 4.4 1.9 5 5"/></svg>Die Beteiligten</button>
+    <button class="tbtn" id="fbtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19 8.5 5h1L15 19M5.2 14h7.6"/><path d="M15.5 19l3-7.5h.6l3 7.5M16.6 16.5h4.4"/></svg><span id="fbtn-t">Schrift: normal</span></button>
+  </div>
+</header>
+
+<div class="previewbar" id="previewbar" hidden><span id="previewtext"></span><button id="resetbtn">Alle Türen wieder schließen</button></div>
+
+<main class="board" aria-labelledby="boardtitle">
+  <h2 class="sr" id="boardtitle">Ermittlungstafel mit 24 Türchen</h2>
+  <div class="calendar" id="calendar"></div>
+</main>
+
+<aside class="memo">
+  <b>Hinweis der Ermittler</b>
+  Öffnen Sie jeden Tag eine Akte. Hinter den Türchen 6, 13 und 20 (Adventssonntage) dürfen Sie Ihren Verdacht abgeben: Wer ist der Mörder?
+</aside>
+<footer>Frohe Weihnachten – und viel Spürsinn!</footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="m-title">
+  <div class="card">
+    <button class="x" id="m-x" aria-label="Schließen">×</button>
+    <div class="card-head">
+      <div class="kicker" id="m-kicker"></div>
+      <div class="emoji" id="m-emoji" aria-hidden="true"></div>
+      <h2 id="m-title"></h2>
+      <div class="when" id="m-when"></div>
+      <span class="stamp hstamp" id="m-stamp">Vertraulich</span>
+    </div>
+    <div class="body" id="m-body"></div>
+    <div class="foot"><button class="btn" id="m-close">Akte schließen</button></div>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* true = Vorschau (alle Türen offen), false = echter Kalender (Türen ab ihrem Datum) */
+const ALLE_TUEREN_OFFEN = true;
+
+const MOERDER = "Marlene Ostermann";
+const VERDAECHTIGE = [
+  ["Gisela Lindner","die Hausherrin"],["Katja Lindner","die Tochter"],["Dr. Konrad Falk","der Landarzt"],
+  ["Rüdiger Hahn","der Bauunternehmer"],["Marlene Ostermann","die Organistin"],["Frieda Kessel","die Haushälterin"],["Jonas Weber","der Küchenchef"]
+];
+/* Abstimmung: Türchen -> Adventssonntag */
+const VOTES = {6:"2. Advent",13:"3. Advent",20:"4. Advent"};
+
+const PERSONEN = [
+ ["Hubertus Lindner, 72","der Gastgeber","Groß, hager, silberweißes Haar, Hornbrille an einer Kordel, tannengrüne Samtweste. Theatralisch, großzügig und stur. Seit 1980 führt er das Hotel, in dem er geboren wurde."],
+ ["Gisela Lindner, 69","die Hausherrin","Schlank, aufrecht, kühle blaue Augen. Beherrscht, trocken und auf ihre Weise loyal. Sie führt das Haus seit Jahrzehnten im Hintergrund."],
+ ["Katja Lindner, 43","die Tochter","Tüchtig, ungeduldig, sarkastisch. Sie führt das Hotel faktisch und will es wirtschaftlich retten, notfalls gegen den Willen ihres Vaters."],
+ ["Dr. Konrad Falk, 71","der Landarzt","Kräftig, weißer Vollbart, Lodenjanker. Warmherzig, gemütlich und konfliktscheu. Seit 1982 Arzt in Eschbach, er kennt Hubertus’ Medikamente."],
+ ["Rüdiger Hahn, 69","der Bauunternehmer","Massig, rotes Gesicht, Siegelring. Laut und jovial, knauserig mit Gefühlen. Früher Bürgermeister, seit Jahrzehnten Hubertus’ Freund und Rivale."],
+ ["Marlene Ostermann, 66","die Organistin","Zierlich, silberne Locken, moosgrüner Wollmantel, eine schwere lederne Notenmappe immer dabei. Sanft, belesen, humorvoll. Ihr Mann Walter, ein Sägewerksbesitzer, starb 2015."],
+ ["Frieda Kessel, 82","die Haushälterin","Klein, hager, grauer Dutt, klirrendes Schlüsselbund. Seit 1975 in der Silbertanne. Barsch, herzlich und abergläubisch."],
+ ["Jonas Weber, 40","der Küchenchef","Groß, dunkles Haar, ruhige Hände mit alten Brandnarben. Wortkarg, aufmerksam, verlässlich. Er kam im August in die Silbertanne."],
+ ["Irene Sander, 58","Hauptkommissarin","Erfahren, groß, zurückhaltend. Grüner Daunenmantel, Strickmütze mit Bommel, Zitronentee ohne alles."],
+ ["Tobias Yilmaz, 31","Oberkommissar","Freundlich, aufmerksam, Lebkuchen-Fan. Er stellt Fragen, die andere vermeiden."],
+ ["Anton Hessel, 81","Polizeihauptmeister a. D.","Er hat 1985 die damalige Akte angelegt und nie ganz mit dem Fall abgeschlossen."]
+];
+
+const DOORS = [
+{e:"🕰️",w:"Samstag, 19. Dezember, 15:20 Uhr",t:"Das Schweigen der Standuhr",s:[
+"Es schneite seit dem Mittag, und Katja Lindner hatte aufgehört, die Flocken zu zählen. In der Halle der Silbertanne roch es nach Tannenreisig, Bienenwachs und nassen Wollmänteln. Im Kamin knackte ein Buchenscheit.",
+"Die Tür flog auf. Rüdiger Hahn stampfte herein, die Pelzmütze voller Schnee; hinter ihm folgte Dr. Falk mit seiner Arzttasche.",
+"„Katja, Mädchen! Wo ist der Alte?“",
+"Katja reichte ihnen die Schlüssel. „Dr. Falk, Zimmer vier. Rüdiger, Gartenzimmer zwei. Frau Ostermann bekommt Gartenzimmer eins.“",
+"Rüdiger sah zur Standuhr. „Die Alte Dame tickt noch?“",
+"„Ja. Aber ab zweiundzwanzig Uhr schweigt sie. Ein Messinghebel stellt den Schlag ab. Die Gäste haben sich über die Nachtschläge beschwert.“",
+"Frieda kam mit einem Tablett aus der Küche. „Ein Haus ohne tickende Uhr ist ein Haus ohne Herz.“",
+"Falk lächelte müde. „Man gewöhnt sich an alles.“ Er zog eine cremefarbene Karte hervor. Hubertus’ Handschrift kündigte an, dass er am Heiligen Abend erzählen werde, was in der Nacht zum 25. Dezember 1985 am Mühlenteich wirklich geschah.",
+"Katja wurde blass. „Davon weiß ich nichts.“",
+"Rüdiger knüllte seine Karte zusammen. Sein Lachen war zu laut. Draußen fiel der Schnee, als wollte er das Tal zudecken."]},
+{e:"🍵",w:"Samstag, 19. Dezember, 16:30 Uhr",t:"Marlenes Wintertee",s:[
+"Mit dem Vier-Uhr-Bus kam Marlene Ostermann. Frieda öffnete ihr die Tür.",
+"„Hier, wie jedes Jahr“, sagte Marlene und reichte ihr ein Leinensäckchen. „Der Wintertee für Hubertus. Pfefferminze, Melisse, Schafgarbe und etwas Thymian.“",
+"Frieda nahm den Beutel entgegen. „Ich fülle ihm die Dose nachher. Wie immer.“",
+"Es war nicht die erste Lieferung in diesem Advent; Marlene hatte bereits am 6. und am 13. Dezember Säckchen gebracht.",
+"Im Kaminzimmer stand die Kaffeetafel. Jonas trug Marlenes Stollen herein. Hubertus erschien in seiner grünen Samtweste, als Rüdiger gerade nach den Streichhölzern griff.",
+"„Die vierte Kerze zündet man nicht vor dem Sonntag.“",
+"Marlene lächelte. „Der Sonntag beginnt um Mitternacht.“",
+"Hubertus küsste ihr die Hand. „Dann hast du ab null Uhr mein Einverständnis.“",
+"Als Marlene ihre schwere Notenmappe auf einen Stuhl legte, sprang das schmale Seitenfach einen Spalt auf. Jonas sah nur den Rand eines vergilbten Fotos: ein junger Mann neben einer Frau mit hellen Locken. Marlene schloss das Fach sofort.",
+"„Alte Noten“, sagte sie, obwohl niemand gefragt hatte. Sie nahm die Mappe wieder an sich."]},
+{e:"🟡",w:"Samstag, 19. Dezember, 19:15 Uhr",t:"Gelb wie Bernstein",s:[
+"Dr. Falk liebte Rehrücken, aber heute schmeckte ihm Jonas’ Essen nicht. Hubertus hielt sein Weinglas gegen die Kerzen.",
+"„Seht ihr das auch? Jede Flamme hat einen gelben Hof. Als hätte jemand die Welt in Honig getaucht.“",
+"Falk wurde aufmerksam. Gelbsehen, Übelkeit, Herzrhythmusstörungen. Er hatte im November Hubertus’ Digitoxin-Dosis erhöht. Vielleicht zu großzügig.",
+"Am anderen Ende der Tafel stritt Hubertus mit Katja über ihre Gespräche mit einer Hotelkette.",
+"„Wir reden Heiligabend“, sagte er.",
+"„Nein, Papa. Wir reden, wenn es um das Hotel geht.“",
+"Gisela bat um Ruhe. Rüdiger lachte an den falschen Stellen. Nach dem Nachtisch klopfte Hubertus an sein Glas.",
+"„Marlene, bleibst du einen Augenblick? Es geht um die Musik für Heiligabend.“",
+"Die anderen gingen. Falk bemerkte, dass Gisela ihm in die Bibliothek folgte, ohne ihn anzusehen. Durch die halb geschlossene Tür sah er Hubertus und Marlene miteinander sprechen, die Köpfe dicht beieinander."]},
+{e:"🔔",w:"Samstag, 19. Dezember, 22:00 Uhr bis Sonntag, 20. Dezember, 01:00 Uhr",t:"Zwölf Schläge",s:[
+"Um zehn Uhr stellte Frieda den Schlag der Standuhr ab. Das Pendel lief weiter, doch die Uhr gab keinen Laut mehr von sich. Sie kontrollierte die Haustür und die Küchentür. Die Terrassentür des Arbeitszimmers ließ sie zunächst geschlossen; später würde Hubertus selbst entscheiden, ob sie geöffnet werden sollte.",
+"Um Viertel vor elf brachte sie ihm den Nachttee. Er saß im Ohrensessel, die Brille auf der Stirn.",
+"„Hast du den Tee stark gemacht?“",
+"„Wie immer.“",
+"„Morgen habe ich etwas zu erzählen.“",
+"Frieda sah, wie blass er war. „Soll ich den Doktor holen?“",
+"„Noch nicht.“",
+"Sie ging. Um Mitternacht stand sie in der Halle. Die Standuhr schwieg. Aus dem Arbeitszimmer hörte sie zwölf dumpfe Schläge der Kaminuhr. Sie konnte nicht wissen, dass im selben Augenblick Marlene über die Terrasse eintrat.",
+"Frieda hörte später durch den Fußboden einen einzelnen Schlag. Dann blieb das Haus still."]},
+{e:"🕯️",w:"Sonntag, 20. Dezember, 06:45 Uhr",t:"Die vierte Kerze",s:[
+"Frieda öffnete leise die Tür zum Arbeitszimmer. Auf dem Schreibtisch brannte die vierte Kerze des Adventskranzes. Hubertus saß im Ohrensessel, den Kopf zur Seite geneigt, die Hände im Schoß.",
+"„Hubertus?“",
+"Sie berührte seinen Hals und zog die Hand zurück. Sie schrie nicht. Sie zog an der Klingelschnur, bis das Haus erwachte. Katja kam im Morgenmantel, Falk folgte mit seiner Tasche. Er tastete nach dem Puls.",
+"„Seit Stunden“, sagte er. „Das Herz.“",
+"Katja sah auf die Kerze. „Mein Vater hätte sie nicht mitten in der Nacht angezündet.“",
+"Frieda schwieg. Katja entdeckte den offenen Safe hinter dem Bild. Das Fach war leer.",
+"„Er hat gesagt, in seiner Mappe liege die Wahrheit.“",
+"Falk wollte den Tod als natürlich bescheinigen. Katja widersprach.",
+"„Sie schreiben gar nichts. Ich rufe die Polizei.“",
+"Die Kerze brannte ruhig weiter."]},
+{e:"🚜",w:"Sonntag, 20. Dezember, 14:10 Uhr",t:"Ein Sonntag ohne Straße",s:[
+"Die Landstraße war unpassierbar. Ein Räumfahrzeug steckte im Graben, die Telefonleitung knisterte. Eine Pistenraupe brachte Hauptkommissarin Irene Sander und Oberkommissar Tobias Yilmaz zur Silbertanne.",
+"„Ich hasse Berge, auf denen Schnee liegt“, murmelte Yilmaz.",
+"Sander ließ alle im Kaminzimmer versammeln. „Der Tod kann natürlich gewesen sein. Aber ein leerer Safe und eine Kerze, die jemand nach Mitternacht angezündet hat, passen nicht dazu. Ich bitte Sie, im Haus zu bleiben und für Befragungen zur Verfügung zu stehen. Sobald die Straßenverhältnisse es erlauben, werden wir weitere Maßnahmen treffen.“",
+"Rüdiger verschränkte die Arme. „Wir sind also alle verdächtig?“",
+"„Im Moment sind wir alle Zeugen“, sagte Sander. „Das kann sich ändern.“",
+"Sie trank den Zitronentee, den Frieda ihr brachte, und sah in die Runde. Niemand erwiderte ihren Blick lange genug."],
+ q:"Wer erscheint Ihnen bisher am verdächtigsten, und warum? Achten Sie darauf, wer etwas verschweigt und wer sich auffällig verhält."},
+{e:"🔦",w:"Sonntag, 20. Dezember, 15:30 Uhr",t:"Die Kommissarin trinkt Zitronentee",s:[
+"Das Arbeitszimmer roch nach kaltem Rauch, Bienenwachs und Kräutern. Sander betrachtete Sessel, Kamin und Schreibtisch. Die vierte Kerze war deutlich heruntergebrannt, aber ihre Länge erlaubte keine genaue Zeitbestimmung.",
+"Yilmaz untersuchte den Safe. „Keine Einbruchsspuren. Er wurde mit der richtigen Kombination geöffnet.“",
+"Sander ging zur Terrassentür. Der Riegel war zurückgeschoben; an der Schwelle lag ein Rand aus Schmelzwasser. „Jemand kam über den Garten oder wurde von dort eingelassen.“",
+"Sie ließ sich von Frieda erklären, dass die Kaminuhr im Arbeitszimmer auch in der Halle zu hören war, die Standuhr dagegen weit durchs Haus trug.",
+"„Wer wusste, dass die Standuhr nachts schweigt?“, fragte sie Katja.",
+"„Falk und Rüdiger habe ich es bei ihrer Ankunft gesagt.“",
+"Auf dem Schreibtisch standen eine kalte Teekanne und die Zinndose. Sander roch an der Mischung. „Wer hat den Tee geliefert?“",
+"„Marlene“, sagte Frieda. „Seit Jahren.“",
+"Sander ließ die Dose sichern."]},
+{e:"📜",w:"Sonntag, 20. Dezember, 19:00 Uhr",t:"Der Entwurf",s:[
+"Yilmaz fand zwischen Rechnungen einen handschriftlichen Entwurf: Die Silbertanne solle zu gleichen Teilen an Katja und Jonas Weber gehen. „Ich schulde ihm, was ich seinem Vater schuldete“, stand darunter.",
+"Katja las den Satz zweimal. „Der Koch soll Miterbe werden?“",
+"Gisela saß bereits in der Bibliothek. Auf Sanders Frage nannte sie den Namen Thomas Reuter. Er war 1985 Kochlehrling gewesen und in der Weihnachtsnacht im Mühlenteich ertrunken. „Man sagte, er sei betrunken ausgerutscht.“",
+"Gisela bestätigte, dass alle zunächst beim Weihnachtsfest im Haus gewesen waren. Später seien einzelne Gäste auseinandergegangen. Sie selbst habe sich nach Mitternacht mit Falk in der Praxis getroffen.",
+"„Und die Prügelei?“, fragte Sander.",
+"Gisela sah zum Fenster. „Rüdiger hat Thomas im Hof geschlagen. Hubertus glaubte Rüdiger und warf den Jungen hinaus.“",
+"Aus der Halle drang ein Weihnachtslied. Es klang in dem stillen Haus beinahe wie eine Erinnerung."]},
+{e:"🕐",w:"Montag, 21. Dezember, 09:00 Uhr",t:"Eine Frage der Uhrzeit",s:[
+"Die Befragungen begannen mit Rüdiger, Falk, Katja und Gisela. Ihre Aussagen waren knapp und widersprüchlich. Marlene kam zuletzt. Sie hielt ihre Notenmappe an die Brust.",
+"„Ich bin gegen halb zwölf ins Gartenhaus gegangen und habe noch gelesen. Um Mitternacht hörte ich die Standuhr schlagen. Dann löschte ich das Licht.“",
+"Sander sah auf. „Die Standuhr?“",
+"„Ja.“ Marlene senkte den Blick. „Ich habe mich wohl verhört.“",
+"Sander notierte den Satz. Als Marlene gegangen war, fragte Yilmaz, was daran auffällig sei.",
+"„Die Standuhr wurde um zehn stumm geschaltet. Sie konnte sie nicht schlagen hören.“",
+"Sander bat die Rechtsmedizin um den vorläufigen Befund und wollte anschließend den Mühlenteich sehen."]},
+{e:"🌊",w:"Montag, 21. Dezember, 14:30 Uhr",t:"Der Teich unter dem Eis",s:[
+"Der Weihnachtsmarkt lag am Ufer des Mühlenteichs. Die kleine Eisbahn war abgesperrt und auf einem gesicherten Teil der Fläche eingerichtet. Am Wehr wartete Anton Hessel, der 1985 die Polizeiakte angelegt hatte.",
+"„Der Junge hatte eine Wunde am Hinterkopf“, sagte er. „Sie passte zur Kante hier. Trotzdem schrieb man Unfall.“",
+"Der alte Müller habe damals eine Frau ohne Mütze vom Wehr ins Dorf laufen sehen. Das Gesicht habe er im Schneetreiben nicht erkannt, aber die hellen Haare. Im Herbst habe Rüdigers Bagger eine Taschenuhr aus dem Schlamm geholt. Auf dem Deckel standen die Initialen T. R. Hessel hatte sie Hubertus im November gegeben.",
+"„Wo ist sie jetzt?“, fragte Sander.",
+"„Bei ihm, dachte ich.“",
+"Sander blickte auf das Eis. Unter der glatten Fläche lag das Wasser, das seit 1985 eine Antwort verweigerte."]},
+{e:"🔥",w:"Montag, 21. Dezember, 19:30 Uhr",t:"Verbrannte Briefe",s:[
+"Yilmaz hatte verbrannte Papierstücke im Kachelofen gefunden. Gisela erklärte, sie habe Briefe aus einer früheren Beziehung mit Falk verbrannt. Die Affäre hatte 1985 vier Monate gedauert. In der Tatnacht seien sie nach dem Fest gemeinsam in der Praxis gewesen.",
+"„Wir wollten nicht, dass Katja davon erfährt.“",
+"Dann kam Rüdiger herein. Auf Sanders Frage gab er zu, Thomas damals im Hof geschlagen zu haben. Es sei um Geld aus der Vereinskasse gegangen.",
+"„Ich habe ihn nicht in den Teich geworfen“, sagte er. „Aber ich habe ihn geschlagen, und Hubertus hat ihn hinausgeworfen.“",
+"Zum ersten Mal klang Rüdigers Stimme nicht laut, sondern müde. Sander ließ ihn ausreden. Schuld und Mord waren nicht dasselbe, aber beides musste ausgesprochen werden."]},
+{e:"👁️",w:"Dienstag, 22. Dezember, 06:10 Uhr",t:"Das Gelb in den Augen",s:[
+"Falk gestand, dass er Hubertus im November Digitoxin höher dosiert hatte. Als Hubertus am Samstag von gelben Höfen um die Flammen gesprochen hatte, dachte Falk an eine mögliche Überdosierung. Er hatte den Totenschein schnell ausstellen wollen, weil er einen eigenen Fehler fürchtete.",
+"Auch 1985 hatte er den Totenschein für Thomas unterschrieben, ohne dessen Kopf zu untersuchen. Er war betrunken gewesen und hatte nach Hause gewollt.",
+"„Ich weiß nicht mehr, ob ich damals etwas übersehen habe“, sagte er.",
+"Sander antwortete: „Das müssen Sie jetzt aufklären. Aber jemand hat den Safe geöffnet und die Kerze angezündet. Das erklärt Ihre Schuld nicht.“",
+"Falk nickte. Draußen schlug die Kirchturmuhr sechs."],
+ q:"Wer hatte Gelegenheit, Motiv und Mittel? Hat sich Ihr Verdacht seit Türchen 6 verändert?"},
+{e:"🕯️",w:"Dienstag, 22. Dezember, 11:00 Uhr",t:"Vier Kerzen um Viertel vor eins",s:[
+"Jonas gab zu, dass er in der Tatnacht im Hof geraucht hatte. Um Viertel vor eins hatte er zum Fenster des Arbeitszimmers hinaufgesehen. Der Vorhang war nicht ganz geschlossen.",
+"„Alle vier Kerzen brannten. Ich sah den Sessel und eine Gestalt darin. Ich dachte, der Chef schläft.“",
+"Sander fragte, ob er jemanden gesehen habe. Jonas verneinte. Er erzählte außerdem, dass er als Baby adoptiert worden war. In seiner Akte stand als Vater Thomas Reuter, bei der Mutter nur die Initialen M. K.",
+"„Hubertus wusste es seit Oktober“, sagte Jonas. „Er bat mich, bis Heiligabend zu warten.“",
+"Sander notierte die beiden Buchstaben. Die vier Kerzen waren nun mehr als eine merkwürdige Einzelheit: Sie belegten, dass nach Mitternacht jemand im Arbeitszimmer gewesen war."]},
+{e:"🌿",w:"Dienstag, 22. Dezember, 16:00 Uhr",t:"Fingerhut",s:[
+"Die Rechtsmedizin meldete einen vorläufigen Befund. Hubertus hatte Digitalisglykoside im Körper. Die Zusammensetzung passte eher zu pflanzlichem Material als zu seinen Tabletten. Die endgültige Analyse stand noch aus.",
+"Sander ließ die Zinndose untersuchen. Auf dem Tisch lagen getrocknete, graugrüne Blätter. Frieda erkannte sie sofort: „Das ist kein Teekraut.“",
+"Marlene wurde blass. Sie erklärte, sie habe im Sommer Beinwell gesammelt und könne die Blätter verwechselt haben. „Wenn ich ihn mit meinen eigenen Händen vergiftet habe …“ Ihre Stimme brach.",
+"Sander sagte zunächst nichts. Ein Versehen war denkbar, aber es erklärte weder den leeren Safe noch die Kerze.",
+"Yilmaz fragte später: „Wer hat dann die Unterlagen genommen?“",
+"Sander antwortete: „Das müssen wir noch herausfinden.“"]},
+{e:"🩺",w:"Dienstag, 22. Dezember, 20:00 Uhr",t:"Das Schweigen des Doktors",s:[
+"Falk erzählte Sander, dass 1985 eine junge, unverheiratete Frau wegen einer Schwangerschaft zu ihm gekommen war. Er hatte ihr Verschwiegenheit zugesagt. Er könne den Namen nicht nennen.",
+"„Ich wusste nie, was aus dem Kind wurde“, sagte er. „Als Jonas im Hotel auftauchte, habe ich begonnen zu rechnen.“",
+"Sander erwähnte die Initialen M. K. Falk erschrak. Er bestätigte nichts und bestritt nichts.",
+"„Seien Sie vorsichtig mit der Frau“, bat er. „Sie hat damals viel verloren.“",
+"Aus der Halle klang das Harmonium. Marlene übte für Heiligabend. Sander hörte einen Moment zu. Dann fragte sie: „Hat sie immer so gespielt?“",
+"Falk nickte. „Seit Jahrzehnten.“"]},
+{e:"🤫",w:"Dienstag, 22. Dezember, 22:30 Uhr",t:"Was Rüdiger nicht sagen wollte",s:[
+"Rüdiger gestand, dass er Hubertus kurz vor Mitternacht besucht hatte. Hubertus saß blass im Sessel und konnte nicht aufstehen. Er sagte, er erwarte noch jemanden, und bat Rüdiger, den Riegel der Terrassentür zu öffnen. Rüdiger tat es und ging durch die Halle zurück.",
+"„Warum haben Sie das verschwiegen?“, fragte Sander.",
+"„Weil ich der Letzte war, der ihn lebend gesehen hat. Und weil ich Thomas geschlagen habe.“",
+"Er erzählte noch einmal von der unterschlagenen Vereinskasse und davon, dass Hubertus ihm damals geglaubt hatte.",
+"Sander sagte: „Sie haben Thomas Gewalt angetan und ihn zum Lügner gemacht. Das ist schwerwiegend. Aber es beweist nicht, dass Sie Hubertus getötet haben.“",
+"Rüdiger sah sie lange an. Zum ersten Mal widersprach er nicht."]},
+{e:"🔤",w:"Mittwoch, 23. Dezember, 08:30 Uhr",t:"Zwei Buchstaben",s:[
+"Die schriftliche Auskunft aus Trier bestätigte die Initialen M. K., den Vater Thomas R. und die Geburt am 12. Juni 1986. Yilmaz nannte zwei mögliche Frauen: Marlene Kuhn und Margarete Kessel.",
+"Sander sprach mit Frieda. „Sie sagten, Sie hätten das Kind weggebracht. War es Ihr Kind?“",
+"Frieda strich über eine Weihnachtskugel. „Ich habe es getragen. Seine Mutter konnte nicht gehen, ohne dass Fragen gestellt worden wären.“",
+"„Wer war die Mutter?“",
+"„Suchen Sie die richtigen Papiere.“",
+"Sander ließ sie in Ruhe. Frieda hatte nicht gelogen, aber sie hatte die entscheidende Antwort zurückgehalten. Sander dachte an die Notenmappe, die Marlene nie aus der Hand gab."]},
+{e:"🕯️",w:"Mittwoch, 23. Dezember, 14:00 Uhr",t:"Sechs Zentimeter Wachs",s:[
+"Sander maß die vierte Kerze. Sie war deutlich heruntergebrannt.",
+"„Das sagt uns nicht auf die Minute, wann sie angezündet wurde“, erklärte sie Yilmaz. „Brenndauer hängt von Docht, Zugluft und Wachs ab. Aber Jonas sah sie um Viertel vor eins.“",
+"Rüdiger hatte den Riegel auf Hubertus’ Bitte geöffnet. Hubertus konnte selbst nicht aufstehen. Marlene hatte die Erlaubnis erhalten, die Kerze ab Mitternacht anzuzünden.",
+"Yilmaz erinnerte an das Foto im Seitenfach der Notenmappe. Sander dachte an die Mutterinitialen und an Friedas unvollständige Antwort.",
+"„Wir brauchen die Originalunterlagen“, sagte sie. „Und wir müssen Marlenes Mappe sehen.“"],
+ q:"Welche Hinweise sprechen tatsächlich für den Täter, welche könnten Ablenkungen sein? Achten Sie auf Uhrzeiten, Kerze, Terrassentür und Foto."},
+{e:"🧪",w:"Mittwoch, 23. Dezember, 18:30 Uhr",t:"Die Schichten",s:[
+"Die Untersuchung der Zinndose ergab drei klar getrennte Schichten. Der Fingerhutanteil war oben am höchsten, darunter deutlich geringer und am Boden am niedrigsten.",
+"Frieda erklärte, dass sie sonntags jeweils ein neues Säckchen obenauf gegeben und die Dose nie geleert hatte. Yilmaz legte die drei Liefertermine auf den Tisch: 6., 13. und 19. Dezember. Die Reste der Säckchen passten zu den Schichten.",
+"„Das ist keine zufällige Verwechslung“, sagte Sander. „Die Mischung wurde über drei Wochen gezielt verstärkt.“",
+"Frieda setzte sich. „Sie hat gesagt, es sei ihr Wintertee.“",
+"Sander schloss die Dose. „Die Befunde sprechen für eine geplante Vergiftung.“"]},
+{e:"📄",w:"Donnerstag, 24. Dezember, 09:15 Uhr",t:"Der Name auf dem Formular",s:[
+"Anton Hessel brachte die alte Akte. Der Müller hatte Marlene Kuhn in jener Nacht ohne Mütze vom Wehr zurückkommen sehen. Hubertus hatte Hessel im November dazu befragt und erfahren, dass der Name damals aus Rücksicht nicht aufgenommen worden war.",
+"Kurz darauf traf die ergänzende Auskunft aus dem Archiv der Vermittlungsstelle ein. Auf der Durchschrift des Freigabeformulars stand Marlene Kuhn, darunter ihre Unterschrift. Frieda war als Begleitperson eingetragen.",
+"„Sie hat das Kind mir in die Arme gelegt“, sagte Frieda. „Sie konnte es nicht selbst fortbringen.“",
+"Am Ende des Flurs stand Marlene mit ihrer Notenmappe. Sie hatte die Unterhaltung gehört."]},
+{e:"🌉",w:"Donnerstag, 24. Dezember, 12:00 Uhr",t:"Was am Wehr geschah",s:[
+"Marlene setzte sich nicht. Sander legte den Brief von 1985, das Foto und Thomas’ Taschenuhr auf den Tisch. Die Uhr stand auf 23:51.",
+"Marlene erzählte, dass Thomas sie zur Lösung ihrer Verlobung bewegen wollte. Er wollte das Kind und hatte angekündigt, Walter noch in derselben Nacht die Wahrheit zu sagen. Sie gerieten in Streit.",
+"„Ich stieß ihn weg. Er fiel gegen die Kante und rutschte ins Wasser. Er atmete noch. Ich hätte ihn herausziehen können.“",
+"Sander fragte nach Hubertus. Marlene sagte, er habe sie mit dem Brief konfrontiert und Jonas die Wahrheit sagen wollen. „Ich konnte nicht zulassen, dass Jonas mich so sieht.“",
+"Sie bestätigte, den Tee präpariert zu haben. „Ich wollte ihn zum Schweigen bringen. Als er um Hilfe bat, ging ich nicht. Ich ließ ihn sterben.“"]},
+{e:"🔎",w:"Donnerstag, 24. Dezember, 15:30 Uhr",t:"Die Nacht im Arbeitszimmer",s:[
+"Sander und Yilmaz rekonstruierten den Ablauf. Rüdiger öffnete kurz vor Mitternacht den Terrassenriegel. Marlene kam um Mitternacht ins Arbeitszimmer, als die Kaminuhr zwölf schlug. Die Standuhr war stumm. Marlene behauptete später, sie habe deren Schläge gehört, und verriet damit, dass sie die tatsächliche Geräuschkulisse nicht kannte.",
+"Sie zündete die vierte Kerze an, öffnete den Safe mit der von Hubertus genannten Kombination und nahm die Unterlagen. Als Hubertus schwächer wurde und um Hilfe bat, holte sie keinen Arzt.",
+"„Die Vergiftung war bereits eine vorsätzliche Handlung“, sagte Sander. „Dass sie ihn anschließend ohne Hilfe ließ, ist ein weiterer belastender Umstand. Wir müssen die rechtliche Einordnung den Ermittlungen und der Staatsanwaltschaft überlassen.“"]},
+{e:"⚖️",w:"Donnerstag, 24. Dezember, 19:00 Uhr",t:"Die letzte Frage",s:[
+"Alle saßen im Kaminzimmer. Sander legte die Teeschichten, die Säckchen, das Freigabeformular und Thomas’ Uhr auf den Tisch. Die Beweise ergaben zusammen ein klares Bild: Marlene hatte die Mischung über drei Wochen verstärkt, Hubertus erwartete sie, sie kam über die Terrasse, zündete die Kerze an und öffnete den Safe. Als Hubertus um Hilfe bat, ließ sie ihn sterben.",
+"Rüdiger hatte Thomas geschlagen und mit seiner Lüge dazu beigetragen, dass Hubertus ihn hinauswarf. Hubertus hatte Thomas nicht geschützt. Falk hatte 1985 den Tod unzureichend untersucht und geschwiegen.",
+"„Das ist nicht dieselbe Schuld“, sagte Sander. „Aber niemand kann sich einreden, er habe nichts damit zu tun.“",
+"Rüdiger kündigte an, die Ehrenbürgerschaft abzulehnen und Jonas die Wahrheit zu sagen. Marlene erklärte sich bereit auszusagen."],
+ q:"Wer trägt welche Schuld an Thomas’ Tod und an Hubertus’ Tod? Unterscheiden Sie zwischen unmittelbarer Tat, unterlassener Hilfe und dem Schweigen der anderen."},
+{e:"🎄",w:"Donnerstag, 24. Dezember, 20:30 Uhr",t:"Heiligabend",finale:true,s:[
+"Jonas stand allein im Arbeitszimmer. Frieda hatte ihm nach der Suppe einen versiegelten Umschlag gegeben. Hubertus’ Brief erklärte, dass Thomas Reuter sein Vater und Marlene Kuhn seine Mutter war. Hubertus bekannte seine eigene Schuld: Er hatte Thomas hinausgeworfen und danach geschwiegen. Er schrieb, Jonas gehöre die Wahrheit und er solle selbst entscheiden, was er daraus mache. Die Silbertanne solle ihm und Katja gehören, nicht als Ersatz für Familie, sondern als Möglichkeit, selbst zu wählen.",
+"Marlene erschien in der Tür. „Ich wollte dich nicht verlieren.“",
+"Jonas sah sie an. „Du hast mich weggegeben. Meine Eltern haben mich großgezogen.“ Er wusste nicht, ob er sie kennenlernen oder ihr verzeihen wollte.",
+"„Das musst du heute nicht entscheiden“, sagte Marlene.",
+"Jonas ging.",
+"Später saßen die anderen im Kaminzimmer. Katja schnitt den Stollen an, Gisela schenkte Tee ein, und Frieda stellte eine zusätzliche Tasse auf den Tisch. Draußen läuteten die Glocken. In der Halle schlug die Standuhr zwölf. Diesmal schwieg niemand."]}
+];
+
+/* ================= Logik ================= */
+const $=id=>document.getElementById(id);
+const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e};
+const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Speicher ---------- */
+const OPEN_KEY="standuhr-geoeffnet", VOTE_KEY="standuhr-tipps", FS_KEY="standuhr-schrift";
+const ls={
+  get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+};
+
+/* ---------- Datum & Modus ---------- */
+const params=new URLSearchParams(location.search), urlTest=params.has("test");
+const preview=ALLE_TUEREN_OFFEN||urlTest;
+const TODAY=(()=>{
+  if(urlTest){const d=parseInt(params.get("test"),10);return{month:11,day:isNaN(d)?24:d}}
+  const n=new Date();return{month:n.getMonth(),day:n.getDate()};
+})();
+const isDec=TODAY.month===11;
+const maxDay=(ALLE_TUEREN_OFFEN&&!urlTest)?24:isDec?Math.min(TODAY.day,24):TODAY.month===0?24:0;
+const opened=new Set(preview?[]:ls.get(OPEN_KEY,[]));
+let tips=ls.get(VOTE_KEY,{});
+
+/* ---------- Adventskerzen (1. Advent: 29.11.) ---------- */
+document.querySelectorAll(".candle").forEach((c,i)=>{
+  const need=[0,6,13,20][i];
+  if(maxDay>=need&&(i===0||isDec||ALLE_TUEREN_OFFEN))c.classList.add("lit");
+});
+
+/* ---------- Ermittlungstafel ---------- */
+const cal=$("calendar");
+DOORS.forEach((d,i)=>{
+  const n=i+1, vote=VOTES[n], slot=el("div",vote?"slot vote-door":"slot");
+  slot.style.setProperty("--r",(((n*37)%7)-3)*.5+"deg");           /* leicht schief angepinnt */
+  if(n>maxDay)slot.classList.add("locked");
+  if(!ALLE_TUEREN_OFFEN&&isDec&&n===maxDay)slot.classList.add("today");
+  if(opened.has(n)&&n<=maxDay)slot.classList.add("open");
+  slot.innerHTML=
+    `<div class="inside" aria-hidden="true"><span class="ie">${d.e}</span><span class="in">Akte ${n}</span>${vote?"<small>Tipp abgeben</small>":""}</div>`+
+    `<button class="door" aria-label="Türchen ${n}${vote?`, ${vote} mit Abstimmung`:""}${n>maxDay?", noch verschlossen":""}">`+
+      `<span class="face"><span class="lbl">${vote||"Türchen"}</span><span class="num">${n}</span>${vote?`<span class="vtip">Ihr Tipp</span>`:""}</span>`+
+    `</button>`;
+  slot.querySelector(".door").addEventListener("click",()=>openDoor(n,slot));
+  slot.querySelector(".inside").addEventListener("click",()=>showCard(n));
+  cal.appendChild(slot);
+});
+
+function swing(s){s.classList.add("swing");clearTimeout(s._t);s._t=setTimeout(()=>s.classList.remove("swing"),1000)}
+function openDoor(n,slot){
+  if(n>maxDay){
+    const diff=n-(isDec?TODAY.day:0);
+    slot.classList.remove("shake");void slot.offsetWidth;slot.classList.add("shake");
+    toast(isDec?`Diese Akte ist noch verschlossen – noch ${diff} ${diff===1?"Tag":"Tage"} Geduld.`:"Die Ermittlungen beginnen am 1. Dezember.");
+    return;
+  }
+  if(slot.classList.contains("open")){showCard(n);return}
+  swing(slot);slot.classList.add("open");slot.classList.remove("today");
+  opened.add(n);if(!preview)ls.set(OPEN_KEY,[...opened]);
+  setTimeout(()=>showCard(n),reduceMotion?0:750);
+}
+
+/* ---------- Akte (Dialog) ---------- */
+const dlg=$("dlg");let lastFocus=null;
+function openDialog({kicker,emoji,title,when,stamp="Vertraulich",content}){
+  $("m-kicker").textContent=kicker;$("m-emoji").textContent=emoji;$("m-title").textContent=title;
+  $("m-when").textContent=when;$("m-when").hidden=!when;$("m-stamp").textContent=stamp;
+  $("m-body").replaceChildren(...content);
+  if(!dlg.open){lastFocus=document.activeElement;dlg.showModal()}
+  dlg.scrollTop=0;$("m-x").focus();
+}
+const closeDialog=()=>dlg.open&&dlg.close();
+dlg.addEventListener("close",()=>{if(lastFocus&&lastFocus.focus)lastFocus.focus()});
+dlg.addEventListener("click",e=>{                                       /* Klick neben die Akte schließt */
+  if(e.target!==dlg)return;const r=dlg.getBoundingClientRect();
+  if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog();
+});
+$("m-close").onclick=closeDialog;$("m-x").onclick=closeDialog;
+
+function voteBox(n){
+  const box=el("div","vote"),opts=el("div","opts"),res=el("div","vres"),btns=[];
+  box.append(el("h3",null,`Ihr Verdacht zum ${VOTES[n]}`),
+    el("p",null,"Wer ist Ihrer Meinung nach der Mörder? Sie dürfen Ihren Tipp jederzeit ändern. Am Heiligabend sehen Sie, ob Sie richtig lagen."));
+  const paint=()=>{btns.forEach(b=>{const on=tips[n]===b.dataset.n;b.classList.toggle("chosen",on);b.setAttribute("aria-pressed",on)});res.textContent=tips[n]?`Ihr Tipp: ${tips[n]}`:""};
+  VERDAECHTIGE.forEach(([name,role])=>{
+    const b=el("button","opt",name);b.type="button";b.dataset.n=name;b.appendChild(el("small",null,role));
+    b.onclick=()=>{tips[n]=name;ls.set(VOTE_KEY,tips);paint()};
+    btns.push(b);opts.appendChild(b);
+  });
+  box.append(opts,res);paint();return box;
+}
+function tipsBox(){
+  const box=el("div","tips"),ul=el("ul");
+  box.append(el("h3",null,"Ihre Tipps im Rückblick"));
+  Object.keys(VOTES).forEach(k=>{
+    const t=tips[k],li=el("li");li.append(`${VOTES[k]}: `);
+    if(!t)li.append("kein Tipp abgegeben");
+    else li.append(t+" ",el("span",t===MOERDER?"ok":"no",t===MOERDER?"✓ richtig":"✗ nicht richtig"));
+    ul.appendChild(li);
+  });
+  const p=el("p",null,`Die Täterin war ${MOERDER}.`);p.style.cssText="margin:10px 0 0;font-weight:600";
+  box.append(ul,p);return box;
+}
+function showCard(n){
+  const d=DOORS[n-1],content=d.s.map(t=>el("p",t.startsWith("„")?"say":null,t));
+  if(d.q){const q=el("div","qbox");q.append(el("b",null,"Ermittlungsfrage"),d.q);content.push(q)}
+  if(VOTES[n])content.push(voteBox(n));
+  if(d.finale)content.push(tipsBox());
+  openDialog({kicker:`Akte ${n} von 24`,emoji:d.e,title:d.t,when:d.w,stamp:d.finale?"Fall gelöst":"Vertraulich",content});
+}
+function showPersons(){
+  const content=[],inv=PERSONEN.length-3;                               /* die letzten drei sind die Ermittler */
+  PERSONEN.forEach(([name,role,text],i)=>{
+    if(i===0)content.push(el("h3","group","Im Hotel"));
+    if(i===inv)content.push(el("h3","group","Die Ermittler"));
+    const p=el("div","person"),info=el("div"),ini=name.replace(/^Dr\. /,"").split(",")[0].split(" ");
+    p.append(el("div","mono",ini[0][0]+ini[ini.length-1][0]),info);
+    info.append(el("b",null,name),el("span",null,role),el("p",null,text));
+    content.push(p);
+  });
+  openDialog({kicker:"Personenkartei",emoji:"🗂️",title:"Die Beteiligten",when:"Landhotel „Silbertanne“, Eschbach",content});
+}
+$("pbtn").onclick=showPersons;
+
+/* ---------- Schriftgröße ---------- */
+const SIZES=[["normal",20],["groß",23],["sehr groß",26]];
+let si=ls.get(FS_KEY,0);if(!SIZES[si])si=0;
+function applySize(){document.documentElement.style.setProperty("--fs",SIZES[si][1]+"px");$("fbtn-t").textContent="Schrift: "+SIZES[si][0]}
+$("fbtn").onclick=()=>{si=(si+1)%SIZES.length;ls.set(FS_KEY,si);applySize()};
+applySize();
+
+/* ---------- Toast ---------- */
+let tt;
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),3200)}
+
+/* ---------- Countdown ---------- */
+(()=>{
+  const c=$("countdown");
+  if(isDec&&TODAY.day<24){const l=24-TODAY.day;c.textContent=`Noch ${l} ${l===1?"Tag":"Tage"} bis Heiligabend`}
+  else if(isDec&&TODAY.day<=26)c.textContent="Frohe Weihnachten!";
+  else if(TODAY.month>0&&TODAY.month<11){const n=new Date(),l=Math.ceil((new Date(n.getFullYear(),11,1)-n)/864e5);c.textContent=`Noch ${l} ${l===1?"Tag":"Tage"} bis zur ersten Akte`}
+})();
+
+/* ---------- Vorschau ---------- */
+if(preview){
+  $("previewbar").hidden=false;
+  $("previewtext").textContent=urlTest?`Testmodus: simuliert wird der ${maxDay}. Dezember.`:"Vorschau: Alle Akten sind geöffnet.";
+  $("resetbtn").onclick=()=>document.querySelectorAll(".slot.open").forEach((s,i)=>setTimeout(()=>{swing(s);s.classList.remove("open")},i*40));
+}
+
+/* ---------- Schnee ---------- */
+(()=>{
+  if(reduceMotion)return;
+  const c=$("snow"),x=c.getContext("2d");
+  let w,h,f,run=false,last=0;
+  function size(){w=c.width=innerWidth;h=c.height=innerHeight;f=Array.from({length:Math.min(80,w/14|0)},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2.2+1,s:Math.random()*.5+.25,d:Math.random()*6}))}
+  function paint(k){x.clearRect(0,0,w,h);x.fillStyle="rgba(255,255,255,.7)";x.beginPath();
+    for(const p of f){if(k){p.y+=p.s*k;p.d+=.01*k;p.x+=Math.sin(p.d)*.4*k;if(p.y>h){p.y=-5;p.x=Math.random()*w}}x.moveTo(p.x,p.y);x.arc(p.x,p.y,p.r,0,6.3)}x.fill()}
+  const paused=()=>document.hidden||dlg.open;
+  function frame(t){if(paused()){run=false;return}const dt=t-last;if(dt>=15){paint(Math.min(dt/16.7,3));last=t}requestAnimationFrame(frame)}
+  function start(){if(run||paused())return;run=true;last=performance.now();requestAnimationFrame(frame)}
+  addEventListener("resize",()=>{size();paint(0)});
+  document.addEventListener("visibilitychange",start);
+  dlg.addEventListener("close",start);
+  size();paint(0);start();
+})();
+</script>
+</body>
+</html>
