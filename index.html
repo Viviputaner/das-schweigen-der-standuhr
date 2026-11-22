@@ -106,7 +106,7 @@ h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.3rem,7vw,3.8rem);l
 .num{font-family:var(--serif);font-weight:700;font-variant-numeric:lining-nums;font-size:clamp(2.2rem,6vw,3rem);line-height:1;color:var(--ink)}
 .vote-door .lbl{color:var(--blood);font-weight:700}
 .vote-door .face{box-shadow:0 7px 14px rgba(0,0,0,.5),inset 0 0 0 3px rgba(155,34,34,.75),inset 0 0 0 6px rgba(255,255,255,.5)}
-.vtip{margin-top:0px;font-family:var(--type);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blood);border:2.5px double var(--blood);border-radius:3px;padding:1px 7px;transform:rotate(-5deg);opacity:.9}
+.vtip{margin-top:5px;font-family:var(--type);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blood);border:2.5px double var(--blood);border-radius:3px;padding:1px 7px;transform:rotate(-5deg);opacity:.9}
 .door:hover:not([disabled]){transform:rotateY(-14deg)}
 .slot.open .door{transform:rotateY(-115deg);opacity:0;pointer-events:none;transition:transform .9s cubic-bezier(.6,-.1,.3,1.2),opacity .35s ease .55s}
 .slot.swing{clip-path:inset(0 round 4px);z-index:2}
@@ -251,7 +251,7 @@ footer{text-align:center;color:#93a6ac;margin-top:26px;font-size:.8rem}
 
 <script>
 /* true = Vorschau (alle Türen offen), false = echter Kalender (Türen ab ihrem Datum) */
-const ALLE_TUEREN_OFFEN = true;
+const ALLE_TUEREN_OFFEN = false;
 
 const MOERDER = "Marlene Ostermann";
 const VERDAECHTIGE = [
@@ -266,7 +266,7 @@ const PERSONEN = [
  ["Gisela Lindner, 69","die Hausherrin","Schlank, aufrecht, kühle blaue Augen. Beherrscht, trocken und auf ihre Weise loyal. Sie führt das Haus seit Jahrzehnten im Hintergrund."],
  ["Katja Lindner, 43","die Tochter","Tüchtig, ungeduldig, sarkastisch. Sie führt das Hotel faktisch und will es wirtschaftlich retten, notfalls gegen den Willen ihres Vaters."],
  ["Dr. Konrad Falk, 71","der Landarzt","Kräftig, weißer Vollbart, Lodenjanker. Warmherzig, gemütlich und konfliktscheu. Seit 1982 Arzt in Eschbach, er kennt Hubertus’ Medikamente."],
- ["Rüdiger Hahn, 69","der Bauunternehmer","Massig, rotes Gesicht, Siegelring. Laut und jovial, knauserig mit Gefühlen. Früher Bürgermeister, seit Jahrzehnten Hubertus’ Freund und Rivale."],
+ ["Rüdiger Hahn, 69","der Bauunternehmer","Massig, rotes Gesicht, Siegelring. Laut und jovial, knauserig mit Gefühlen. Früher Bürgermeister, seit Jahrzehnten Hubertus’ Freund und Rivale. Im Januar soll er Ehrenbürger von Eschbach werden."],
  ["Marlene Ostermann, 66","die Organistin","Zierlich, silberne Locken, moosgrüner Wollmantel, eine schwere lederne Notenmappe immer dabei. Sanft, belesen, humorvoll. Ihr Mann Walter, ein Sägewerksbesitzer, starb 2015."],
  ["Frieda Kessel, 82","die Haushälterin","Klein, hager, grauer Dutt, klirrendes Schlüsselbund. Seit 1975 in der Silbertanne. Barsch, herzlich und abergläubisch."],
  ["Jonas Weber, 40","der Küchenchef","Groß, dunkles Haar, ruhige Hände mit alten Brandnarben. Wortkarg, aufmerksam, verlässlich. Er kam im August in die Silbertanne."],
@@ -288,16 +288,14 @@ const DOORS = [
 "Katja wurde blass. „Davon weiß ich nichts.“",
 "Rüdiger knüllte seine Karte zusammen. Sein Lachen war zu laut. Draußen fiel der Schnee, als wollte er das Tal zudecken."]},
 {e:"🍵",w:"Samstag, 19. Dezember, 16:30 Uhr",t:"Marlenes Wintertee",s:[
-"Mit dem Vier-Uhr-Bus kam Marlene Ostermann. Frieda öffnete ihr die Tür.",
-"„Hier, wie jedes Jahr“, sagte Marlene und reichte ihr ein Leinensäckchen. „Der Wintertee für Hubertus. Pfefferminze, Melisse, Schafgarbe und etwas Thymian.“",
-"Frieda nahm den Beutel entgegen. „Ich fülle ihm die Dose nachher. Wie immer.“",
-"Es war nicht die erste Lieferung in diesem Advent; Marlene hatte bereits am 6. und am 13. Dezember Säckchen gebracht.",
-"Im Kaminzimmer stand die Kaffeetafel. Jonas trug Marlenes Stollen herein. Hubertus erschien in seiner grünen Samtweste, als Rüdiger gerade nach den Streichhölzern griff.",
-"„Die vierte Kerze zündet man nicht vor dem Sonntag.“",
-"Marlene lächelte. „Der Sonntag beginnt um Mitternacht.“",
-"Hubertus küsste ihr die Hand. „Dann hast du ab null Uhr mein Einverständnis.“",
-"Als Marlene ihre schwere Notenmappe auf einen Stuhl legte, sprang das schmale Seitenfach einen Spalt auf. Jonas sah nur den Rand eines vergilbten Fotos: ein junger Mann neben einer Frau mit hellen Locken. Marlene schloss das Fach sofort.",
-"„Alte Noten“, sagte sie, obwohl niemand gefragt hatte. Sie nahm die Mappe wieder an sich."]},
+"Mit dem Vier-Uhr-Bus kam Marlene Ostermann, die Wangen rot von der Kälte, die schwere Notenmappe an die Brust gedrückt wie ein Kind. Frieda öffnete ihr die Tür und nahm ihr den Mantel ab. „Du bist dünner geworden“, sagte sie. „Und du bist älter geworden“, sagte Marlene. „Das ist auch kein Verbrechen.“ Sie lachten beide, und es klang, als täten sie es aus Gewohnheit.",
+"Im Flur zog Marlene ein Leinensäckchen aus der Manteltasche. „Der Wintertee für Hubertus. Pfefferminze, Melisse, Schafgarbe, ein wenig Thymian. Wie jedes Jahr, nur ein bisschen mehr, weil der Winter so früh kam.“",
+"„Er trinkt ihn jeden Abend.“ Frieda wog das Säckchen in der Hand. „Schon das dritte in diesem Advent. Der Doktor erlaubt ihm nur eine Tasse. Ich füll’s nachher in die Zinndose, wie immer.“",
+"Marlene sah zu, wie das Säckchen im Küchenschrank verschwand. Ihr Blick blieb einen Moment zu lange an der Schranktür hängen. Dann drehte sie sich um und fragte nach Jonas.",
+"Er stand am Herd und rührte in einer Soße. Sie blieb in der Tür stehen, ohne dass er es merkte, und sah ihm zu: die ruhigen Hände mit den alten Narben, die Art, wie er den Löffel hielt. „Sie haben wieder Zimt in den Stollenteig getan“, sagte er, ohne sich umzudrehen. „Den mochte meine Mutter auch.“ Marlene hielt sich an der Türklinke fest. „Welche Mutter?“, fragte sie, viel zu freundlich. „Die, die mich großgezogen hat. Sie ist vor sechs Jahren gestorben.“ „Das tut mir leid.“ „Danke.“ Er probierte die Soße. „Sie hätte Sie gemocht.“",
+"Im Kaminzimmer stand die Kaffeetafel. Hubertus erschien in seiner grünen Samtweste, als Rüdiger gerade nach den Streichhölzern griff. „Die vierte Kerze zündet man nicht vor dem Sonntag.“ Marlene lächelte. „Der Sonntag beginnt um Mitternacht.“ Hubertus küsste ihr die Hand. „Dann hast du ab null Uhr mein Einverständnis.“ Für einen Augenblick erwiderte er ihr Lächeln, dann wurde sein Gesicht ernst.",
+"„Heiligabend, Marlene. Du weißt, wie lange ich gewartet habe.“ Er sagte es leise, nur für sie. „Ich gebe dir bis dahin Zeit, es ihm selbst zu sagen. Sonst tue ich es.“ Sie antwortete nicht. Als sie ihre Tasse hob, klirrte sie gegen den Unterteller, und sie stellte sie rasch wieder ab.",
+"Später, als alle aufstanden, rutschte die Notenmappe vom Stuhl. Das schmale Seitenfach sprang auf. Jonas, der gerade Stollen nachlegte, sah den Rand eines vergilbten Fotos: ein junger Mann neben einer Frau mit hellen Locken. Marlene schloss das Fach, bevor er genauer hinsah. „Alte Noten“, sagte sie, obwohl niemand gefragt hatte, und für einen Moment sah sie aus, als wäre ihr kalt."]},
 {e:"🟡",w:"Samstag, 19. Dezember, 19:15 Uhr",t:"Gelb wie Bernstein",s:[
 "Dr. Falk liebte Rehrücken, aber heute schmeckte ihm Jonas’ Essen nicht. Hubertus hielt sein Weinglas gegen die Kerzen.",
 "„Seht ihr das auch? Jede Flamme hat einen gelben Hof. Als hätte jemand die Welt in Honig getaucht.“",
@@ -313,11 +311,11 @@ const DOORS = [
 "Um Viertel vor elf brachte sie ihm den Nachttee. Er saß im Ohrensessel, die Brille auf der Stirn.",
 "„Hast du den Tee stark gemacht?“",
 "„Wie immer.“",
-"„Morgen habe ich etwas zu erzählen.“",
+"„Heiligabend habe ich etwas zu erzählen. Vielleicht muss ich es gar nicht mehr.“",
 "Frieda sah, wie blass er war. „Soll ich den Doktor holen?“",
 "„Noch nicht.“",
-"Sie ging. Um Mitternacht stand sie in der Halle. Die Standuhr schwieg. Aus dem Arbeitszimmer hörte sie zwölf dumpfe Schläge der Kaminuhr. Sie konnte nicht wissen, dass im selben Augenblick Marlene über die Terrasse eintrat.",
-"Frieda hörte später durch den Fußboden einen einzelnen Schlag. Dann blieb das Haus still."]},
+"Sie ging. Um Mitternacht stand sie in der Halle. Die Standuhr schwieg. Aus dem Arbeitszimmer hörte sie zwölf dumpfe Schläge der Kaminuhr. Sie konnte nicht wissen, dass im selben Augenblick jemand über die Terrasse eintrat.",
+"Später, schon in ihrer Kammer über dem Arbeitszimmer, hörte Frieda durch den Fußboden einen einzelnen Schlag. Dann blieb das Haus still."]},
 {e:"🕯️",w:"Sonntag, 20. Dezember, 06:45 Uhr",t:"Die vierte Kerze",s:[
 "Frieda öffnete leise die Tür zum Arbeitszimmer. Auf dem Schreibtisch brannte die vierte Kerze des Adventskranzes. Hubertus saß im Ohrensessel, den Kopf zur Seite geneigt, die Hände im Schoß.",
 "„Hubertus?“",
@@ -357,7 +355,7 @@ const DOORS = [
 "Aus der Halle drang ein Weihnachtslied. Es klang in dem stillen Haus beinahe wie eine Erinnerung."]},
 {e:"🕐",w:"Montag, 21. Dezember, 09:00 Uhr",t:"Eine Frage der Uhrzeit",s:[
 "Die Befragungen begannen mit Rüdiger, Falk, Katja und Gisela. Ihre Aussagen waren knapp und widersprüchlich. Marlene kam zuletzt. Sie hielt ihre Notenmappe an die Brust.",
-"„Ich bin gegen halb zwölf ins Gartenhaus gegangen und habe noch gelesen. Um Mitternacht hörte ich die Standuhr schlagen. Dann löschte ich das Licht.“",
+"„Ich bin gegen halb zwölf in mein Gartenzimmer gegangen und habe noch gelesen. Um Mitternacht hörte ich die Standuhr schlagen. Dann löschte ich das Licht.“",
 "Sander sah auf. „Die Standuhr?“",
 "„Ja.“ Marlene senkte den Blick. „Ich habe mich wohl verhört.“",
 "Sander notierte den Satz. Als Marlene gegangen war, fragte Yilmaz, was daran auffällig sei.",
@@ -370,23 +368,26 @@ const DOORS = [
 "„Wo ist sie jetzt?“, fragte Sander.",
 "„Bei ihm, dachte ich.“",
 "Sander blickte auf das Eis. Unter der glatten Fläche lag das Wasser, das seit 1985 eine Antwort verweigerte."]},
-{e:"🔥",w:"Montag, 21. Dezember, 19:30 Uhr",t:"Verbrannte Briefe",s:[
-"Yilmaz hatte verbrannte Papierstücke im Kachelofen gefunden. Gisela erklärte, sie habe Briefe aus einer früheren Beziehung mit Falk verbrannt. Die Affäre hatte 1985 vier Monate gedauert. In der Tatnacht seien sie nach dem Fest gemeinsam in der Praxis gewesen.",
-"„Wir wollten nicht, dass Katja davon erfährt.“",
-"Dann kam Rüdiger herein. Auf Sanders Frage gab er zu, Thomas damals im Hof geschlagen zu haben. Es sei um Geld aus der Vereinskasse gegangen.",
-"„Ich habe ihn nicht in den Teich geworfen“, sagte er. „Aber ich habe ihn geschlagen, und Hubertus hat ihn hinausgeworfen.“",
-"Zum ersten Mal klang Rüdigers Stimme nicht laut, sondern müde. Sander ließ ihn ausreden. Schuld und Mord waren nicht dasselbe, aber beides musste ausgesprochen werden."]},
+{e:"🍲",w:"Montag, 21. Dezember, 19:30 Uhr",t:"Das Abendessen",s:[
+"Niemand hatte Hunger, aber niemand wollte der Erste sein, der den Tisch verließ. Jonas stellte die Suppe ab und trat zurück. Es war so still, dass man die Löffel hörte und die Standuhr nicht, weil sie ja schwieg.",
+"„Wenn mir noch einmal jemand erzählt, wir seien alle Zeugen“, sagte Katja, „dann schreie ich.“ Ihre Mutter hob nicht einmal den Kopf. „Dann schrei. Wird dir danach leichter?“ „Mama, Papa wollte uns erzählen, wie ein junger Mann gestorben ist, sein Safe ist leer, und du sitzt da wie bei einer Konfirmation!“",
+"Gisela legte den Löffel hin. „Dein Vater hat mich vierzig Jahre lang gebraucht, damit niemand Fragen stellt. Ich habe das gut gemacht.“ Dann, sehr leise: „Heute Mittag habe ich Briefe verbrannt. Es waren Briefe von Konrad.“ Falk wurde grau im Gesicht. „Gisela, nicht hier.“ „Doch hier. 1985 waren wir vier Monate lang … und in der Weihnachtsnacht waren wir nach dem Fest in seiner Praxis. Deshalb weiß keiner von uns, was am Teich geschah.“",
+"Katja starrte von einem zum anderen. „Ihr?“ Falk griff nach seinem Wasserglas und verschüttete es.",
+"Rüdiger sprang auf, dass der Stuhl umfiel. „Hört auf, so zu tun, als wäre ich der Einzige, der nichts zu beichten hat!“ Er atmete schwer. „Ich habe Thomas im Hof geschlagen. Wegen der Vereinskasse. Ich hatte selbst Geld herausgenommen und es ihm angehängt. Ich habe ihn nicht in den Teich geworfen. Aber ich habe ihn geschlagen, und Hubertus hat ihn davongejagt, weil ich es so erzählt habe.“ Er sah zu Jonas, der die Suppenschüssel noch in den Händen hielt. „Und ich sehe Sie jeden Tag und tue so, als wüsste ich nicht, wem Sie ähnlich sehen.“",
+"Jonas stellte die Schüssel ab. „Sagen Sie es ruhig.“ Niemand sagte etwas. Marlene faltete ihre Serviette, wieder und wieder, bis sie ein winziges Quadrat war.",
+"Später, als die anderen gegangen waren, wischte Jonas in der Küche die Arbeitsplatte. Marlene kam mit zwei Tassen herein. „Sie haben nichts gegessen.“ „Sie auch nicht.“ Sie setzten sich. Er erzählte ihr, ohne dass sie fragte, dass er als Säugling adoptiert worden sei. „Meinen Vater kenne ich nur als Namen in einer Akte. Von meiner Mutter gibt es zwei Buchstaben. Ich habe nie nach ihr gesucht. Ich wollte nur eines wissen: ob sie je an mich gedacht hat.“",
+"Marlene wartete lange mit der Antwort. „Ich glaube“, sagte sie, „jeden Tag.“ „Woher wollen Sie das wissen?“ „Weil man einen Menschen, den man weggeben musste, nicht vergisst. Man lernt nur, das Gesicht dabei nicht zu verziehen.“ Jonas sah sie an, zum ersten Mal wirklich, und lächelte unsicher. „Sie reden, als wüssten Sie es.“ „Ich bin alt“, sagte Marlene. „Man weiß viel.“"]},
 {e:"👁️",w:"Dienstag, 22. Dezember, 06:10 Uhr",t:"Das Gelb in den Augen",s:[
 "Falk gestand, dass er Hubertus im November Digitoxin höher dosiert hatte. Als Hubertus am Samstag von gelben Höfen um die Flammen gesprochen hatte, dachte Falk an eine mögliche Überdosierung. Er hatte den Totenschein schnell ausstellen wollen, weil er einen eigenen Fehler fürchtete.",
 "Auch 1985 hatte er den Totenschein für Thomas unterschrieben, ohne dessen Kopf zu untersuchen. Er war betrunken gewesen und hatte nach Hause gewollt.",
 "„Ich weiß nicht mehr, ob ich damals etwas übersehen habe“, sagte er.",
-"Sander antwortete: „Das müssen Sie jetzt aufklären. Aber jemand hat den Safe geöffnet und die Kerze angezündet. Das erklärt Ihre Schuld nicht.“",
+"Sander antwortete: „Das müssen Sie jetzt aufklären. Aber jemand hat den Safe geöffnet und die Kerze angezündet. Ihr Fehler erklärt das nicht.“",
 "Falk nickte. Draußen schlug die Kirchturmuhr sechs."],
  q:"Wer hatte Gelegenheit, Motiv und Mittel? Hat sich Ihr Verdacht seit Türchen 6 verändert?"},
 {e:"🕯️",w:"Dienstag, 22. Dezember, 11:00 Uhr",t:"Vier Kerzen um Viertel vor eins",s:[
 "Jonas gab zu, dass er in der Tatnacht im Hof geraucht hatte. Um Viertel vor eins hatte er zum Fenster des Arbeitszimmers hinaufgesehen. Der Vorhang war nicht ganz geschlossen.",
 "„Alle vier Kerzen brannten. Ich sah den Sessel und eine Gestalt darin. Ich dachte, der Chef schläft.“",
-"Sander fragte, ob er jemanden gesehen habe. Jonas verneinte. Er erzählte außerdem, dass er als Baby adoptiert worden war. In seiner Akte stand als Vater Thomas Reuter, bei der Mutter nur die Initialen M. K.",
+"Sander fragte, ob er jemanden gesehen habe. Jonas verneinte. Er erzählte außerdem, dass er als Baby adoptiert worden war. In seiner Akte stand als Vater Thomas Reuter, bei der Mutter nur die Initialen M. K. Und er erwähnte das Foto, dessen Rand er am Samstag in Marlenes Notenmappe gesehen hatte: ein junger Mann neben einer Frau mit hellen Locken.",
 "„Hubertus wusste es seit Oktober“, sagte Jonas. „Er bat mich, bis Heiligabend zu warten.“",
 "Sander notierte die beiden Buchstaben. Die vier Kerzen waren nun mehr als eine merkwürdige Einzelheit: Sie belegten, dass nach Mitternacht jemand im Arbeitszimmer gewesen war."]},
 {e:"🌿",w:"Dienstag, 22. Dezember, 16:00 Uhr",t:"Fingerhut",s:[
@@ -401,24 +402,24 @@ const DOORS = [
 "„Ich wusste nie, was aus dem Kind wurde“, sagte er. „Als Jonas im Hotel auftauchte, habe ich begonnen zu rechnen.“",
 "Sander erwähnte die Initialen M. K. Falk erschrak. Er bestätigte nichts und bestritt nichts.",
 "„Seien Sie vorsichtig mit der Frau“, bat er. „Sie hat damals viel verloren.“",
-"Aus der Halle klang das Harmonium. Marlene übte für Heiligabend. Sander hörte einen Moment zu. Dann fragte sie: „Hat sie immer so gespielt?“",
-"Falk nickte. „Seit Jahrzehnten.“"]},
+"Aus der Halle klang das Harmonium. Marlene übte für Heiligabend, doch zwischen den Chorälen spielte sie immer wieder dieselbe kurze Melodie, ein Wiegenlied. Sander hörte einen Moment zu. „Spielt sie das jedes Jahr?“",
+"Falk nickte. „Jedes Jahr. Immer nur hier, nie in der Kirche.“"]},
 {e:"🤫",w:"Dienstag, 22. Dezember, 22:30 Uhr",t:"Was Rüdiger nicht sagen wollte",s:[
 "Rüdiger gestand, dass er Hubertus kurz vor Mitternacht besucht hatte. Hubertus saß blass im Sessel und konnte nicht aufstehen. Er sagte, er erwarte noch jemanden, und bat Rüdiger, den Riegel der Terrassentür zu öffnen. Rüdiger tat es und ging durch die Halle zurück.",
 "„Warum haben Sie das verschwiegen?“, fragte Sander.",
 "„Weil ich der Letzte war, der ihn lebend gesehen hat. Und weil ich Thomas geschlagen habe.“",
-"Er erzählte noch einmal von der unterschlagenen Vereinskasse und davon, dass Hubertus ihm damals geglaubt hatte.",
-"Sander sagte: „Sie haben Thomas Gewalt angetan und ihn zum Lügner gemacht. Das ist schwerwiegend. Aber es beweist nicht, dass Sie Hubertus getötet haben.“",
+"Er erzählte noch einmal von der Vereinskasse, aus der er selbst Geld genommen und das er Thomas angehängt hatte, und davon, dass Hubertus ihm damals geglaubt hatte.",
+"Sander sagte: „Sie haben Thomas Gewalt angetan und ihn zum Dieb gemacht. Das ist schwerwiegend. Aber es beweist nicht, dass Sie Hubertus getötet haben.“",
 "Rüdiger sah sie lange an. Zum ersten Mal widersprach er nicht."]},
 {e:"🔤",w:"Mittwoch, 23. Dezember, 08:30 Uhr",t:"Zwei Buchstaben",s:[
-"Die schriftliche Auskunft aus Trier bestätigte die Initialen M. K., den Vater Thomas R. und die Geburt am 12. Juni 1986. Yilmaz nannte zwei mögliche Frauen: Marlene Kuhn und Margarete Kessel.",
-"Sander sprach mit Frieda. „Sie sagten, Sie hätten das Kind weggebracht. War es Ihr Kind?“",
-"Frieda strich über eine Weihnachtskugel. „Ich habe es getragen. Seine Mutter konnte nicht gehen, ohne dass Fragen gestellt worden wären.“",
+"Die schriftliche Auskunft aus Trier bestätigte die Initialen M. K., den Vater Thomas R. und die Geburt am 12. Juni 1986. Übergeben hatte das Kind eine Begleitperson namens Kessel. Yilmaz fand im Melderegister von 1986 zwei Frauen, auf die die Initialen passten: Marlene Kuhn und Margarete Kessel, Friedas Nichte.",
+"Sander sprach mit Frieda. „Eine Frau Kessel hat das Kind weggebracht. Waren Sie das? War es das Kind Ihrer Nichte?“",
+"Frieda strich über eine Weihnachtskugel. „Margarete war damals vierzehn. Ja, ich habe das Kind getragen. Seine Mutter konnte nicht gehen, ohne dass Fragen gestellt worden wären.“",
 "„Wer war die Mutter?“",
 "„Suchen Sie die richtigen Papiere.“",
 "Sander ließ sie in Ruhe. Frieda hatte nicht gelogen, aber sie hatte die entscheidende Antwort zurückgehalten. Sander dachte an die Notenmappe, die Marlene nie aus der Hand gab."]},
 {e:"🕯️",w:"Mittwoch, 23. Dezember, 14:00 Uhr",t:"Sechs Zentimeter Wachs",s:[
-"Sander maß die vierte Kerze. Sie war deutlich heruntergebrannt.",
+"Sander maß die vierte Kerze. Sechs Zentimeter waren heruntergebrannt.",
 "„Das sagt uns nicht auf die Minute, wann sie angezündet wurde“, erklärte sie Yilmaz. „Brenndauer hängt von Docht, Zugluft und Wachs ab. Aber Jonas sah sie um Viertel vor eins.“",
 "Rüdiger hatte den Riegel auf Hubertus’ Bitte geöffnet. Hubertus konnte selbst nicht aufstehen. Marlene hatte die Erlaubnis erhalten, die Kerze ab Mitternacht anzuzünden.",
 "Yilmaz erinnerte an das Foto im Seitenfach der Notenmappe. Sander dachte an die Mutterinitialen und an Friedas unvollständige Antwort.",
@@ -426,38 +427,50 @@ const DOORS = [
  q:"Welche Hinweise sprechen tatsächlich für den Täter, welche könnten Ablenkungen sein? Achten Sie auf Uhrzeiten, Kerze, Terrassentür und Foto."},
 {e:"🧪",w:"Mittwoch, 23. Dezember, 18:30 Uhr",t:"Die Schichten",s:[
 "Die Untersuchung der Zinndose ergab drei klar getrennte Schichten. Der Fingerhutanteil war oben am höchsten, darunter deutlich geringer und am Boden am niedrigsten.",
-"Frieda erklärte, dass sie sonntags jeweils ein neues Säckchen obenauf gegeben und die Dose nie geleert hatte. Yilmaz legte die drei Liefertermine auf den Tisch: 6., 13. und 19. Dezember. Die Reste der Säckchen passten zu den Schichten.",
+"Frieda erklärte, dass sie jedes neue Säckchen noch am Tag der Lieferung obenauf gegeben und die Dose nie geleert hatte. Yilmaz legte die drei Liefertermine auf den Tisch: 6., 13. und 19. Dezember. Die Reste der Säckchen passten zu den Schichten.",
 "„Das ist keine zufällige Verwechslung“, sagte Sander. „Die Mischung wurde über drei Wochen gezielt verstärkt.“",
 "Frieda setzte sich. „Sie hat gesagt, es sei ihr Wintertee.“",
 "Sander schloss die Dose. „Die Befunde sprechen für eine geplante Vergiftung.“"]},
 {e:"📄",w:"Donnerstag, 24. Dezember, 09:15 Uhr",t:"Der Name auf dem Formular",s:[
-"Anton Hessel brachte die alte Akte. Der Müller hatte Marlene Kuhn in jener Nacht ohne Mütze vom Wehr zurückkommen sehen. Hubertus hatte Hessel im November dazu befragt und erfahren, dass der Name damals aus Rücksicht nicht aufgenommen worden war.",
+"Anton Hessel brachte die alte Akte und setzte sich schwer. „Ich habe Ihnen am Montag nicht alles gesagt.“ Der Müller hatte die Frau ohne Mütze sehr wohl erkannt: Marlene Kuhn. Hessel hatte den Namen damals aus Rücksicht nicht in die Akte geschrieben, weil sie mit dem Sägewerksbesitzer Walter Ostermann verlobt war. Im November hatte Hubertus ihn danach gefragt, und Hessel hatte ihm die Wahrheit gesagt.",
 "Kurz darauf traf die ergänzende Auskunft aus dem Archiv der Vermittlungsstelle ein. Auf der Durchschrift des Freigabeformulars stand Marlene Kuhn, darunter ihre Unterschrift. Frieda war als Begleitperson eingetragen.",
 "„Sie hat das Kind mir in die Arme gelegt“, sagte Frieda. „Sie konnte es nicht selbst fortbringen.“",
 "Am Ende des Flurs stand Marlene mit ihrer Notenmappe. Sie hatte die Unterhaltung gehört."]},
-{e:"🌉",w:"Donnerstag, 24. Dezember, 12:00 Uhr",t:"Was am Wehr geschah",s:[
-"Marlene setzte sich nicht. Sander legte den Brief von 1985, das Foto und Thomas’ Taschenuhr auf den Tisch. Die Uhr stand auf 23:51.",
-"Marlene erzählte, dass Thomas sie zur Lösung ihrer Verlobung bewegen wollte. Er wollte das Kind und hatte angekündigt, Walter noch in derselben Nacht die Wahrheit zu sagen. Sie gerieten in Streit.",
-"„Ich stieß ihn weg. Er fiel gegen die Kante und rutschte ins Wasser. Er atmete noch. Ich hätte ihn herausziehen können.“",
-"Sander fragte nach Hubertus. Marlene sagte, er habe sie mit dem Brief konfrontiert und Jonas die Wahrheit sagen wollen. „Ich konnte nicht zulassen, dass Jonas mich so sieht.“",
-"Sie bestätigte, den Tee präpariert zu haben. „Ich wollte ihn zum Schweigen bringen. Als er um Hilfe bat, ging ich nicht. Ich ließ ihn sterben.“"]},
+{e:"⌚",w:"Donnerstag, 24. Dezember, 12:00 Uhr",t:"Neun Minuten vor Mitternacht",s:[
+"Marlene setzte sich nicht, als Sander sie bat. Sie stand am Fenster der Bibliothek, die Notenmappe wie einen Schild vor der Brust. Auf dem Tisch lagen Hessels Abschrift, das Freigabeformular und Thomas’ Taschenuhr, die Yilmaz am Morgen in Hubertus’ Schreibtischschublade gefunden hatte. Das Glas war gesprungen, die Zeiger standen auf 23:51.",
+"„Die Uhr ist stehen geblieben, als Wasser ins Werk lief“, sagte Sander. „Neun Minuten vor Mitternacht, in der Weihnachtsnacht 1985. Kurz darauf sah der Müller eine Frau ohne Mütze vom Wehr laufen. Wo waren Sie um diese Zeit?“",
+"Marlene sah die Uhr lange an, ohne sie zu berühren. „Thomas hatte sie von seinem Großvater. Er sah dauernd darauf, als hätte er Angst, etwas zu verpassen.“ Dann hob sie den Kopf. „Ich war zu Hause. Walter hat mich um halb zwölf heimgebracht.“ „Ihr Mann ist seit elf Jahren tot.“ „Dafür kann ich nichts.“",
+"Sander schob das Formular über den Tisch. Marlene las ihren eigenen Namen, als gehöre er einer Fremden. „Ja“, sagte sie schließlich. „Ich habe im Juni 1986 ein Kind bekommen und es weggegeben. Ich war verlobt, und der Vater war tot. Bis zum Sommer war ich bei meiner Tante in Trier, und Walter glaubte, ich pflege sie. Das ist traurig, Frau Kommissarin. Ein Verbrechen ist es nicht.“",
+"„Und der Teich?“ „Damit habe ich nichts zu tun. Der Müller hat eine Frau mit hellen Haaren gesehen. Die halbe Gemeinde hatte damals helle Haare.“ „Und der Tee? Sie sagten, Sie hätten die Blätter verwechselt. Dreimal, und jedes Mal mehr?“ „Ich bin eine alte Frau. Meine Augen sind nicht mehr gut.“ Yilmaz sah von seinen Notizen auf. „Ihre Noten lesen Sie ohne Brille.“",
+"Marlene antwortete nicht. Sander streckte die Hand aus. „Ihre Mappe, bitte.“ Für einen Moment schien es, als würde Marlene sich weigern. Dann legte sie die Mappe auf den Tisch, ganz behutsam, wie etwas, das zerbrechen könnte, und ging hinaus, ohne sich umzusehen.",
+"„Sie lügt“, sagte Yilmaz, als die Tür zu war. „Sie lügt seit vierzig Jahren, und sie lügt gut“, sagte Sander. „Heute Abend sitzen alle am selben Tisch. Da wird es schwerer.“"]},
 {e:"🔎",w:"Donnerstag, 24. Dezember, 15:30 Uhr",t:"Die Nacht im Arbeitszimmer",s:[
-"Sander und Yilmaz rekonstruierten den Ablauf. Rüdiger öffnete kurz vor Mitternacht den Terrassenriegel. Marlene kam um Mitternacht ins Arbeitszimmer, als die Kaminuhr zwölf schlug. Die Standuhr war stumm. Marlene behauptete später, sie habe deren Schläge gehört, und verriet damit, dass sie die tatsächliche Geräuschkulisse nicht kannte.",
-"Sie zündete die vierte Kerze an, öffnete den Safe mit der von Hubertus genannten Kombination und nahm die Unterlagen. Als Hubertus schwächer wurde und um Hilfe bat, holte sie keinen Arzt.",
-"„Die Vergiftung war bereits eine vorsätzliche Handlung“, sagte Sander. „Dass sie ihn anschließend ohne Hilfe ließ, ist ein weiterer belastender Umstand. Wir müssen die rechtliche Einordnung den Ermittlungen und der Staatsanwaltschaft überlassen.“"]},
+"Sander und Yilmaz rekonstruierten, was in der Nacht zum Sonntag geschehen sein musste. Rüdiger hatte kurz vor Mitternacht den Terrassenriegel geöffnet, weil Hubertus ihn darum gebeten hatte. Hubertus erwartete jemanden, dem er eine letzte Möglichkeit geben wollte: den Umschlag aus dem Safe selbst zu holen und Jonas die Wahrheit zu bringen. Nur so ließ sich erklären, dass der Safe ohne Gewalt mit der richtigen Kombination geöffnet worden war. Und die vierte Kerze war das Zeichen, das er am Samstagnachmittag versprochen hatte: ab null Uhr mein Einverständnis.",
+"„Wer kam, kam um Mitternacht“, sagte Sander. „Als die Kaminuhr zwölf schlug. Die Standuhr schwieg seit zehn. Marlene hat am Montag ausgesagt, sie habe zwölf Schläge gehört, und sie hielt sie für die Standuhr. Wer in dieser Nacht zwölf Schläge hörte, hörte die Kaminuhr. Und die hört man nur im Arbeitszimmer und in der Halle.“ Auch der einzelne Schlag, den Frieda später durch den Fußboden gehört hatte, kam von der Kaminuhr. Sie schlug zur halben Stunde einmal: halb eins.",
+"Yilmaz legte einen Zettel dazu. Er hatte bei der Apotheke in Eschbach nachgefragt: Walter Ostermann hatte bis zu seinem Tod jahrelang Digitoxin genommen. „Sie kennt die Zeichen einer Überdosis“, sagte er. „Gelbsehen, Übelkeit, blaue Lippen. Sie hat sie jahrelang bei ihrem Mann gesehen.“",
+"„Dann wusste sie, was sie vor sich hatte, als sie hereinkam“, sagte Sander. „Sie hätte nur die Tür zur Halle öffnen müssen. Dr. Falk schlief ein Stockwerk höher.“ Stattdessen hatte jemand den Safe geöffnet, die Unterlagen genommen und war durch die Terrassentür gegangen. Um Viertel vor eins sah Jonas aus dem Hof nur eine Gestalt im Sessel und vier brennende Kerzen.",
+"Yilmaz hatte die Notenmappe durchgesehen. Er sagte nur: „Heute Abend.“ Sander nickte."],
+ q:"Was liegt Ihrer Meinung nach im Seitenfach der Notenmappe? Und warum hat Marlene es nicht vernichtet, obwohl es sie verraten könnte?"},
 {e:"⚖️",w:"Donnerstag, 24. Dezember, 19:00 Uhr",t:"Die letzte Frage",s:[
-"Alle saßen im Kaminzimmer. Sander legte die Teeschichten, die Säckchen, das Freigabeformular und Thomas’ Uhr auf den Tisch. Die Beweise ergaben zusammen ein klares Bild: Marlene hatte die Mischung über drei Wochen verstärkt, Hubertus erwartete sie, sie kam über die Terrasse, zündete die Kerze an und öffnete den Safe. Als Hubertus um Hilfe bat, ließ sie ihn sterben.",
-"Rüdiger hatte Thomas geschlagen und mit seiner Lüge dazu beigetragen, dass Hubertus ihn hinauswarf. Hubertus hatte Thomas nicht geschützt. Falk hatte 1985 den Tod unzureichend untersucht und geschwiegen.",
-"„Das ist nicht dieselbe Schuld“, sagte Sander. „Aber niemand kann sich einreden, er habe nichts damit zu tun.“",
-"Rüdiger kündigte an, die Ehrenbürgerschaft abzulehnen und Jonas die Wahrheit zu sagen. Marlene erklärte sich bereit auszusagen."],
+"Alle saßen im Kaminzimmer, außer Jonas. Katja hatte ihn überredet, in der Küche zu bleiben. Sander legte die Teeschichten, die Säckchen, das Freigabeformular und Thomas’ Uhr auf den Tisch. „Kein Beweis allein hätte gereicht. Zusammen ergeben sie ein Bild.“",
+"Sie erklärte, was die Dose zeigte: dreimal Lieferung, dreimal mehr Fingerhut, die Reste sogar in den Falten der Säckchen. Frieda hielt die Hände ineinander verkrampft. „Ich habe jeden Abend Tee gekocht“, flüsterte sie. „Jeden Abend.“ Sander sagte, ohne zu zögern: „Und Sie haben ihn nicht getötet. Das wissen wir.“",
+"„Frau Ostermann“, sagte sie dann. „Sie haben ausgesagt, Sie hätten um Mitternacht die Standuhr gehört.“ „Ja.“ „Die Standuhr war seit zehn Uhr abgestellt. Was Sie gehört haben, war die Kaminuhr im Arbeitszimmer.“ Marlene öffnete den Mund und schloss ihn wieder. „Ihr Mann hat jahrelang Digitoxin genommen. Sie wussten, wie eine Vergiftung aussieht. Und Sie sagen, Sie hätten die Blätter verwechselt.“",
+"Yilmaz legte die Notenmappe auf den Tisch und öffnete das Seitenfach. Er nahm heraus: das vergilbte Foto, die Unterlagen aus Hubertus’ Safe und einen kleinen, zerknitterten Zettel. In zittriger Bleistiftschrift stand darauf: 12. Juni 1986. Er hat mich angesehen, und ich habe gelacht.",
+"„Den habe ich im Krankenhaus geschrieben“, sagte Marlene tonlos. „Eine Stunde, bevor Frieda ihn mitgenommen hat. Es ist das Einzige, was ich von ihm habe.“ „Und die Unterlagen aus dem Safe“, sagte Sander. „Warum haben Sie die nicht verbrannt?“ „Ich wollte es. Jede Nacht. Ich konnte nicht.“",
+"Dann setzte sie sich, zum ersten Mal an diesem Tag, und begann zu erzählen, ohne dass jemand fragte. Vom Wehr. Thomas hatte nach der Schlägerei im Hof geblutet und gesagt, er gehe jetzt zu Walter und sage ihm alles. „Ich flehte ihn an. Er sagte, ich schäme mich für ihn. Das stimmte. Ich stieß ihn, nicht fest. Er fiel gegen die Kante und rutschte ins Wasser. Er atmete noch, ich hörte ihn husten. Und ich dachte: Wenn ich jetzt gehe, ist es ein Unfall. Ich rannte. Ohne Mütze.“ Sie sah auf die Taschenuhr. „Neun Minuten vor zwölf. Ich habe es nie gewusst. Jetzt weiß ich es.“",
+"Dann von Hubertus. „Seit August durfte ich in Jonas’ Nähe sein. Ich habe seinen Stollen gelobt und mit ihm im selben Raum gesessen, zum ersten Mal seit vierzig Jahren. Im Oktober sagte Hubertus, er wisse, wer Jonas’ Mutter ist. Im November wusste er auch vom Wehr. Ich habe nicht an Thomas gedacht. Ich habe daran gedacht, dass Jonas mich bald nicht mehr ansieht wie die freundliche alte Frau, die seinen Stollen lobt.“ Leiser: „Den Fingerhut habe ich im Oktober in meinem Garten gepflückt. Ich redete mir ein, Hubertus solle nur krank werden und Heiligabend verschieben. Bei jedem Säckchen sagte ich mir, es sei das letzte. Ich wusste, dass Konrad ihm das Herzmittel erhöht hatte. Ich wusste, dass bei einem alten Mann mit schwachem Herzen niemand lange fragt.“",
+"„Und in der Nacht?“, fragte Sander. Marlene schloss die Augen. „Ich habe die Kerze angezündet, wie wir es verabredet hatten. Erst dann sah ich ihn richtig an. Die Lippen blau, die Hände im Schoß. ‚Du hast Gelb gesehen‘, habe ich gesagt. ‚Die Kerzen.‘ Er sah mich lange an und verstand. ‚Marlene‘, sagte er. ‚Hol Konrad.‘ Ich hätte nur die Tür öffnen müssen. Ich habe den Safe geöffnet und bin gegangen.“",
+"Rüdiger saß da wie ein Mann, dem man den Boden entzogen hat. „Ich hätte es wissen müssen“, murmelte er. „Ich habe zugesehen, wie du jedes Jahr hier gesessen hast.“ „Und du hast geschwiegen“, sagte Gisela schneidend. „Wir alle.“ Katja stand auf und stellte sich vor Marlene. „Er hat dir vertraut. Er hat dich die Kerze anzünden lassen.“ Ihre Stimme zitterte. „Und du hast sie angezündet und bist gegangen.“ Marlene nickte. Katja holte aus, ließ die Hand aber sinken. „Ich hasse dich“, sagte sie. „Und ich verstehe dich, und das ist das Schlimmste daran.“",
+"Falk senkte den Kopf. Rüdiger kündigte an, die Ehrenbürgerschaft abzulehnen und Jonas selbst die Wahrheit über den Hof zu sagen. Frieda stand auf und ging an Marlene vorbei, ohne sie anzusehen. Dann blieb sie stehen. „Ich habe dich nicht verraten“, sagte sie heiser. „Ich habe dich nur nicht mehr beschützt.“",
+"„Darf ich es Jonas selbst sagen?“, fragte Marlene. „Zuerst Ihre Aussage“, sagte Sander. „Und er soll es zuerst von Hubertus lesen. Dann haben Sie zehn Minuten, und Herr Yilmaz steht vor der Tür.“ Marlene nickte. Zum ersten Mal an diesem Tag sah sie aus, als atme sie."],
  q:"Wer trägt welche Schuld an Thomas’ Tod und an Hubertus’ Tod? Unterscheiden Sie zwischen unmittelbarer Tat, unterlassener Hilfe und dem Schweigen der anderen."},
-{e:"🎄",w:"Donnerstag, 24. Dezember, 20:30 Uhr",t:"Heiligabend",finale:true,s:[
-"Jonas stand allein im Arbeitszimmer. Frieda hatte ihm nach der Suppe einen versiegelten Umschlag gegeben. Hubertus’ Brief erklärte, dass Thomas Reuter sein Vater und Marlene Kuhn seine Mutter war. Hubertus bekannte seine eigene Schuld: Er hatte Thomas hinausgeworfen und danach geschwiegen. Er schrieb, Jonas gehöre die Wahrheit und er solle selbst entscheiden, was er daraus mache. Die Silbertanne solle ihm und Katja gehören, nicht als Ersatz für Familie, sondern als Möglichkeit, selbst zu wählen.",
-"Marlene erschien in der Tür. „Ich wollte dich nicht verlieren.“",
-"Jonas sah sie an. „Du hast mich weggegeben. Meine Eltern haben mich großgezogen.“ Er wusste nicht, ob er sie kennenlernen oder ihr verzeihen wollte.",
-"„Das musst du heute nicht entscheiden“, sagte Marlene.",
-"Jonas ging.",
-"Später saßen die anderen im Kaminzimmer. Katja schnitt den Stollen an, Gisela schenkte Tee ein, und Frieda stellte eine zusätzliche Tasse auf den Tisch. Draußen läuteten die Glocken. In der Halle schlug die Standuhr zwölf. Diesmal schwieg niemand."]}
+{e:"🎄",w:"Donnerstag, 24. Dezember, 21:15 Uhr",t:"Heiligabend",finale:true,s:[
+"Jonas stand allein im Arbeitszimmer. Frieda hatte ihm nach der Suppe einen versiegelten Umschlag gegeben. Hubertus’ Brief bestätigte, was Jonas über Thomas Reuter wusste, und nannte den Namen hinter den Initialen M. K.: Marlene Kuhn, verheiratete Ostermann. Er beschrieb, was er 1985 getan hatte: Er hatte Thomas nach Rüdigers Anschuldigung hinausgeworfen, obwohl er wusste, dass der Streit nicht geklärt war. Als Thomas nicht zurückkehrte, hatte er die Suche nicht ernst genug genommen. Später hatte er den Unfallbericht akzeptiert, weil die Wahrheit auch ihn belastet hätte. Über Marlene schrieb er, dass sie Thomas nicht gerettet und das Kind zur Adoption freigegeben hatte. Er entschuldigte ihr Handeln nicht. Er wollte Jonas nur nicht länger im Unwissen lassen. Die Silbertanne solle ihm und Katja gehören, nicht als Ersatz für Familie, sondern als Möglichkeit, selbst zu wählen.",
+"Jonas las den Satz über die Frau zweimal. Er dachte an das Foto im Notenfach, an das Gespräch in der Küche am Montagabend. Er sagte nichts, als Marlene an der Tür erschien, und sie blieb auf Abstand.",
+"„Ich habe dich einmal aus der Ferne gesehen“, sagte sie. „Du warst vier. Deine Eltern trugen dich über den Marktplatz, und du hast gelacht. Ich bin nicht näher gekommen. Ich dachte, das wäre das Beste für dich.“ „Du hast entschieden, ohne mich zu fragen.“ „Ja. Und später habe ich wieder geschwiegen. Und dann habe ich verhindert, dass es jemand anderes sagt.“",
+"Jonas’ Stimme blieb ruhig, was schlimmer war als Schreien. „Du hast mir am Montag in der Küche gesagt, du glaubst, sie denkt jeden Tag an mich. Hast du da gewusst, dass du von dir sprichst?“ „Ja.“ „Und zwei Tage vorher hattest du jemanden sterben lassen, damit ich es nicht erfahre.“ „Ja.“ Er lehnte sich gegen den Schreibtisch. „Was soll ich damit anfangen?“ „Nichts“, sagte Marlene. „Du musst nichts damit anfangen.“",
+"Er hob den Zettel auf, den Yilmaz auf den Schreibtisch gelegt hatte, und las ihn. Seine Hand zitterte erst, als er ihn zurücklegte. „Ich weiß nicht, ob ich dir jemals verzeihen kann. Ich weiß nur, dass ich wissen will, wer mein Vater war. Dass du es mir erzählst, ohne mich zu schonen.“ Marlene nickte. „Alles. Auch das, was mich schlecht aussehen lässt.“ „Gut“, sagte er. Das war alles.",
+"Marlene ging mit Yilmaz hinaus, und im Flur drehte sie sich nicht um. Später saßen die anderen im Kaminzimmer. Niemand tat so, als wäre alles wieder gut. Rüdiger hatte Jonas einen Platz freigehalten, doch Jonas setzte sich zu Katja. Falk blieb am Fenster stehen. Gisela legte Frieda eine Hand auf den Arm. Katja schnitt den Stollen an, und Frieda stellte eine zusätzliche Tasse auf den Tisch, ohne sie jemandem zuzuordnen. Draußen läuteten die Glocken. Frieda hatte den Messinghebel zurückgelegt, und in der Halle schlug die Standuhr zwölf. Diesmal hörten alle hin."]}
 ];
 
 /* ================= Logik ================= */
